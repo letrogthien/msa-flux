@@ -1,4 +1,4 @@
-package com.gin.msaflux.auth_service.models;
+package com.gin.msaflux.auth_service.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;

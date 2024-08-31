@@ -20,4 +20,5 @@ public class UserService {
     public Mono<User> getByUserName(final String name){
         return userRepository.findByUsername(name);
     }
+    public Mono<User> save(final User user){return userRepository.save(user);}
 }

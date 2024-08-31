@@ -15,6 +15,8 @@ import org.springframework.web.server.ServerWebExchange;
 import org.springframework.web.server.WebFilter;
 import org.springframework.web.server.WebFilterChain;
 import reactor.core.publisher.Mono;
+
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -23,24 +25,27 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class JwtFilter implements WebFilter {
     private final JwtUtil jwtUtil;
+    private final List<String> nonAuthenticate = List.of("/auth/login", "/auth/register");
     @Override
     @NonNull
     public Mono<Void> filter(@NonNull ServerWebExchange exchange,@NonNull WebFilterChain chain) {
-        if (exchange.getRequest().getPath().toString().contains("authas")){
+        String path = exchange.getRequest().getPath().toString();
+        boolean isNonAuthPath = nonAuthenticate.stream().anyMatch(path::contains);
+        if (isNonAuthPath) {
             return chain.filter(exchange);
         }
         String authHeader = exchange.getRequest().getHeaders().getFirst("Authorization");
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
-            return chain.filter(exchange);
+            return Mono.error(new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Unauthorized"));
         }
         final String token = authHeader.substring(7);
 
         try {
             if (jwtUtil.isExpiration(token)) {
-                throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Expired JWT token");
+                return Mono.error(new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Expired JWT token"));
             }
             if (!jwtUtil.isTokenValid(token)) {
-                throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid JWT Token");
+                return Mono.error(new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid JWT Token"));
             }
             Set<SimpleGrantedAuthority> authorities = jwtUtil.extractAuthorities(token).stream().map(SimpleGrantedAuthority::new).collect(Collectors.toSet());
             UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken
