@@ -1,8 +1,7 @@
-package com.gin.msaflux.auth_service.services;
+package com.gin.msaflux.auth_service.serviceimp;
 
 
 import lombok.RequiredArgsConstructor;
-
 
 
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -14,27 +13,27 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
+import java.util.List;
+
 
 @Service
 @RequiredArgsConstructor
 public class CustomUserDetailsService implements ReactiveUserDetailsService {
-    private final UserService userService;
-    private final RoleService roleService;
-    private final UserRoleService userRoleService;
+    private final UserServiceImp userService;
+
     @Override
     public Mono<UserDetails> findByUsername(String username) {
         return userService.getByUserName(username)
                 .switchIfEmpty(Mono.error(new UsernameNotFoundException("User not found")))
-                .flatMap(user -> userRoleService.getByUserId(user.getId())
-                        .flatMap(userRole -> roleService.getById(userRole.getRoleId())
-                                .map(role -> new SimpleGrantedAuthority(role.getName()))
-                        )
-                        .collectList()
-                        .map(authorities -> User.withUsername(user.getUsername())
-                                .password(user.getPassword())
-                                .authorities(authorities)
-                                .build()
-                        )
-                );
+                .flatMap(user -> {
+                    List<SimpleGrantedAuthority> authorities =user.getRoles().stream().map(
+                            SimpleGrantedAuthority::new
+                    ).toList();
+                    return Mono.just(User.builder()
+                            .authorities(authorities)
+                            .username(user.getUsername())
+                            .password(user.getPassword())
+                            .build());
+                });
     }
 }

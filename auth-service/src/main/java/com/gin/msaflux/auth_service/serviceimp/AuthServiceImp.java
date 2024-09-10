@@ -1,11 +1,17 @@
-package com.gin.msaflux.auth_service.services;
+package com.gin.msaflux.auth_service.serviceimp;
 
 
+import com.gin.msaflux.auth_service.common.RoleType;
 import com.gin.msaflux.auth_service.gmail.EmailSender;
 import com.gin.msaflux.auth_service.jwt.JwtUtil;
+import com.gin.msaflux.auth_service.models.User;
+import com.gin.msaflux.auth_service.request.ChangPasswordRq;
+import com.gin.msaflux.auth_service.request.RegisterRq;
 import com.gin.msaflux.auth_service.response.AuthResponse;
+import com.gin.msaflux.auth_service.services.AuthService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.security.authentication.ReactiveAuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.ReactiveSecurityContextHolder;
@@ -14,22 +20,26 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
+import java.time.LocalDateTime;
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class AuthService {
+public class AuthServiceImp implements AuthService {
     private final JwtUtil  jwtUtil;
     private final ReactiveAuthenticationManager authenticationManager;
     private final CustomUserDetailsService customUserDetailsService;
     private final PasswordEncoder passwordEncoder;
     private final EmailSender emailSender;
-    private final UserService userService;
-    private final TokenService tokenService;
+    private final UserServiceImp userService;
+    private final TokenServiceImp tokenService;
+    private final KafkaTemplate<Object, Object> kafkaTemplate;
 
     private static final String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
+    @Override
     public Mono<AuthResponse> authenticate(String username, String password) {
         UsernamePasswordAuthenticationToken authenticationToken =
                 new UsernamePasswordAuthenticationToken(username, password);
@@ -52,6 +62,7 @@ public class AuthService {
     }
 
 
+    @Override
     public Mono<AuthResponse> refreshToken() {
         return ReactiveSecurityContextHolder.getContext()
                 .flatMap(securityContext -> {
@@ -73,6 +84,7 @@ public class AuthService {
                 });
     }
 
+    @Override
     public Mono<String> forgetPassword(final String userName, final String email) {
         return userService.getByUserName(userName)
                 .filter(user -> user.getEmail().equals(email))
@@ -91,21 +103,51 @@ public class AuthService {
                 );
     }
 
-    public Mono<String> changePassword(final String oldPassword, final String newPassword) {
+    @Override
+    public Mono<String> changePassword(final ChangPasswordRq changPasswordRq) {
         return ReactiveSecurityContextHolder.getContext().flatMap(
                 securityContext ->
                         customUserDetailsService.findByUsername(securityContext.getAuthentication().getName())
-                                .filter(user -> user.getPassword().equals(passwordEncoder.encode(oldPassword)))
+                                .filter(user -> user.getPassword().equals(passwordEncoder.encode(changPasswordRq.getOldPassword())))
                                 .switchIfEmpty(Mono.error(new RuntimeException("old pass incorrect")))
                                 .flatMap(
                                         userDetails ->
                                                 userService.getByUserName(userDetails.getUsername())
                                                         .flatMap(user -> {
-                                                            user.setPassword(passwordEncoder.encode(newPassword));
+                                                            user.setPassword(passwordEncoder.encode(changPasswordRq.getNewPassword()));
                                                             return userService.save(user)
                                                                     .thenReturn("change password successful");
                                                         })
                                 )
         );
+    }
+
+    @Override
+    public Mono<Object> register(RegisterRq registerRq) {
+        if (registerRq.getPassword() == null || registerRq.getPassword().isEmpty()) {
+            return Mono.error(new RuntimeException("Password cannot be null or empty"));
+        }
+        if (registerRq.getEmail() == null || registerRq.getEmail().isEmpty()) {
+            return Mono.error(new RuntimeException("Email cannot be null or empty"));
+        }
+        if (registerRq.getUsername() == null || registerRq.getUsername().isEmpty()) {
+            return Mono.error(new RuntimeException("Username cannot be null or empty"));
+        }
+        return userService.getByUserName(registerRq.getUsername())
+                .flatMap(user -> Mono.error(new RuntimeException("User Exists")))
+                .switchIfEmpty(
+                        userService.save(
+                                        User.builder()
+                                                .roles(List.of(String.valueOf(RoleType.CUSTOMER)))
+                                                .createdAt(LocalDateTime.now())
+                                                .username(registerRq.getUsername())
+                                                .password(passwordEncoder.encode(registerRq.getPassword()))
+                                                .email(registerRq.getEmail())
+                                                .build()
+                                ).doOnSuccess(
+                                        user -> kafkaTemplate.send("register", user.getUsername()) //send to User Service to add user
+                                )
+                                .then(Mono.just("register receipt"))
+                );
     }
 }

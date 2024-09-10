@@ -50,7 +50,6 @@ public class JwtFilter implements WebFilter {
             Set<SimpleGrantedAuthority> authorities = jwtUtil.extractAuthorities(token).stream().map(SimpleGrantedAuthority::new).collect(Collectors.toSet());
             UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken
                     = new UsernamePasswordAuthenticationToken(jwtUtil.extractUserName(token), null, authorities);
-            log.error(authorities.toString());
             SecurityContext securityContext = new SecurityContextImpl(usernamePasswordAuthenticationToken);
             return chain.filter(exchange).
                     contextWrite(ReactiveSecurityContextHolder.withSecurityContext(Mono.just(securityContext)));

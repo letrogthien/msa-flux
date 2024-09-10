@@ -1,7 +1,8 @@
-package com.gin.msaflux.auth_service.services;
+package com.gin.msaflux.auth_service.serviceimp;
 
-import com.gin.msaflux.auth_service.models.Token;
-import com.gin.msaflux.auth_service.repository.TokenRepository;
+import com.gin.msaflux.auth_service.common.TokenType;
+import com.gin.msaflux.auth_service.models.JwtToken;
+import com.gin.msaflux.auth_service.repository.JwtTokenRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
@@ -9,14 +10,12 @@ import reactor.core.publisher.Mono;
 
 @Service
 @RequiredArgsConstructor
-public class TokenService {
-    private final TokenRepository tokenRepository;
+public class TokenServiceImp {
+    private final JwtTokenRepository tokenRepository;
 
-    public Flux<Token> getAllByUserId(Long userId){
-        return tokenRepository.findAllByUserId(userId);
-    }
 
-    public Flux<Token> getAllChangeRevokedExpired(Long userId){
+
+    public Flux<JwtToken> getAllChangeRevokedExpired(String userId){
          return tokenRepository.findAllByUserId(userId)
                  .filter(token -> !token.isExpired() && !token.isRevoked())
                 .flatMap(
@@ -28,11 +27,11 @@ public class TokenService {
                 );
     }
 
-    public Mono<Token> saveToken(String token, Long userId, boolean refreshToken){
+    public Mono<JwtToken> saveToken(String token, String userId, boolean refreshToken){
         return tokenRepository.save(
-                Token.builder()
-                        .jwtToken(token)
-                        .type("BEARER")
+                JwtToken.builder()
+                        .token(token)
+                        .type(TokenType.BEARER)
                         .userId(userId)
                         .expired(false)
                         .revoked(false)

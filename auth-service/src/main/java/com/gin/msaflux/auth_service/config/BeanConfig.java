@@ -1,5 +1,6 @@
 package com.gin.msaflux.auth_service.config;
 
+import com.gin.msaflux.auth_service.common.RoleType;
 import com.gin.msaflux.auth_service.jwt.JwtFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -27,7 +28,8 @@ public class BeanConfig {
     public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
         http.csrf(ServerHttpSecurity.CsrfSpec::disable);
         http.authorizeExchange(exchange ->
-            exchange.anyExchange().permitAll()
+            exchange.pathMatchers("/test/all").hasAuthority(RoleType.CUSTOMER.name())
+                    .anyExchange().permitAll()
             );
         http.addFilterAfter(jwtFilter, SecurityWebFiltersOrder.AUTHENTICATION);
         return http.build();

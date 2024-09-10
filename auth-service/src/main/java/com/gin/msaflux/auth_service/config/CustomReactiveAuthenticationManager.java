@@ -1,6 +1,6 @@
 package com.gin.msaflux.auth_service.config;
 
-import com.gin.msaflux.auth_service.services.CustomUserDetailsService;
+import com.gin.msaflux.auth_service.serviceimp.CustomUserDetailsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.ReactiveAuthenticationManager;
