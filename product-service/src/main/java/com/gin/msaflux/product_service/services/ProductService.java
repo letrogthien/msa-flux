@@ -1,7 +1,6 @@
 package com.gin.msaflux.product_service.services;
 
 import com.gin.msaflux.product_service.dtos.ProductDto;
-import com.gin.msaflux.product_service.jwt.JwtUtil;
 import com.gin.msaflux.product_service.models.Product;
 
 import com.gin.msaflux.product_service.repositories.ProductRepository;
