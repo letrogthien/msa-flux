@@ -28,6 +28,7 @@ public class JwtUtil {
     public String extractUserName(String token){
         return extractClaim(token, Claims::getSubject);
     }
+
     private Date extractExpiration(String token) {
         return extractClaim(token, Claims::getExpiration);
     }
@@ -36,6 +37,10 @@ public class JwtUtil {
         Claims claims = extractAllClaims(token);
         return claims.get("roles", List.class);
     }
+    public String extractUserId(String token){
+        Claims claims = extractAllClaims(token);
+        return claims.get("id",String.class);
+    }
     public boolean isExpiration(String token){
         return extractExpiration(token).before(new Date());
     }
@@ -43,29 +48,32 @@ public class JwtUtil {
         Claims claims = extractAllClaims(token);
         return claimsResolver.apply(claims);
     }
-    public String generateToken(UserDetails userDetails) {
-        return generateToken(new HashMap<>(), userDetails);
+    public String generateToken(UserDetails userDetails, String id) {
+        return generateToken(new HashMap<>(), userDetails,id);
     }
 
     public String generateToken(
             Map<String, Object> extraClaims,
-            UserDetails userDetails
+            UserDetails userDetails,
+            String id
     ) {
-        return buildToken(extraClaims, userDetails, jwtExpiration);
+        return buildToken(extraClaims, userDetails, jwtExpiration, id);
     }
 
     public String generateRefreshToken(
-            UserDetails userDetails
+            UserDetails userDetails, String id
     ) {
-        return buildToken(new HashMap<>(), userDetails, refreshExpiration);
+        return buildToken(new HashMap<>(), userDetails, refreshExpiration, id);
     }
     private String buildToken(
             Map<String, Object> extraClaims,
             UserDetails userDetails,
-            long expiration
+            long expiration,
+            String id
     ) {
         List<String> authorities =  userDetails.getAuthorities().stream().map(Object::toString).toList();
         extraClaims.put("roles", authorities);
+        extraClaims.put("id", id);
         return Jwts
                 .builder()
                 .setClaims(extraClaims)

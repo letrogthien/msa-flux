@@ -29,6 +29,10 @@ public class JwtUtil {
         Claims claims = extractAllClaims(token);
         return claims.get("roles", List.class);
     }
+    public String extractUserId(String token){
+        Claims claims = extractAllClaims(token);
+        return claims.get("id",String.class);
+    }
     public boolean isExpiration(String token){
         return extractExpiration(token).before(new Date());
     }

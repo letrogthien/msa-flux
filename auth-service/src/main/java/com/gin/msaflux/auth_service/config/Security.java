@@ -16,7 +16,7 @@ import org.springframework.security.web.server.SecurityWebFilterChain;
 @Configuration
 @EnableWebFluxSecurity
 @RequiredArgsConstructor
-public class BeanConfig {
+public class Security {
     private final JwtFilter jwtFilter;
 
     @Bean

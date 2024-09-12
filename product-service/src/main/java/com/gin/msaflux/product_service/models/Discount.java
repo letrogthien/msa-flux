@@ -6,15 +6,22 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "categories")
-public class Category {
+@Document(collection = "discounts")
+public class Discount {
     @Id
     private String id;
-    private String name;
+    private String code;
     private String description;
-    private String parentCategoryId;
+    private int discountPercentage;
+    private List<String> productIds;
+    private LocalDateTime validFrom;
+    private LocalDateTime validUntil;
+
 }

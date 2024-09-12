@@ -1,6 +1,7 @@
-package com.gin.msaflux.product_service.config;
+package com.gin.msaflux.user_service.config;
 
-import com.gin.msaflux.product_service.jwt.JwtFilter;
+
+import com.gin.msaflux.user_service.jwt.JwtFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,15 +15,14 @@ import org.springframework.security.web.server.SecurityWebFilterChain;
 @RequiredArgsConstructor
 public class Security {
     private final JwtFilter jwtFilter;
+
     @Bean
     public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
         http.csrf(ServerHttpSecurity.CsrfSpec::disable);
-        http.authorizeExchange(
-                authorizeExchangeSpec ->
-                    authorizeExchangeSpec.pathMatchers("/api/v1/product/**").permitAll()
-                            .anyExchange().authenticated()
-
-        ).addFilterAfter(jwtFilter, SecurityWebFiltersOrder.AUTHENTICATION);
+        http.authorizeExchange(exchange ->
+                        exchange.anyExchange().permitAll()
+        );
+        http.addFilterAfter(jwtFilter, SecurityWebFiltersOrder.AUTHENTICATION);
         return http.build();
     }
 }

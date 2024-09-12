@@ -51,8 +51,8 @@ public class AuthServiceImp implements AuthService {
                             .flatMap(user ->
                                      tokenService.getAllChangeRevokedExpired(user.getId())
                                             .then(Mono.defer(() -> {
-                                                String tk = jwtUtil.generateToken(userDetails);
-                                                String refreshToken = jwtUtil.generateRefreshToken(userDetails);
+                                                String tk = jwtUtil.generateToken(userDetails, user.getId());
+                                                String refreshToken = jwtUtil.generateRefreshToken(userDetails, user.getId());
                                                 return tokenService.saveToken(tk, user.getId(), false)
                                                         .then(tokenService.saveToken(refreshToken, user.getId(), true))
                                                         .thenReturn(new AuthResponse(tk, refreshToken));
@@ -66,21 +66,23 @@ public class AuthServiceImp implements AuthService {
     public Mono<AuthResponse> refreshToken() {
         return ReactiveSecurityContextHolder.getContext()
                 .flatMap(securityContext -> {
-                    String userName = securityContext.getAuthentication().getName();
-                    return customUserDetailsService.findByUsername(userName)
-                            .flatMap(userDetails -> {
-                                String name = userDetails.getUsername();
-                                return userService.getByUserName(name)
-                                        .flatMap(user ->
-                                                tokenService.getAllChangeRevokedExpired(user.getId())
-                                                        .then(Mono.defer(() -> {
-                                                            String tk = jwtUtil.generateToken(userDetails);
-                                                            return tokenService.saveToken(tk, user.getId(), false)
-                                                                    .thenReturn(new AuthResponse(tk, null));
-                                                        }))
-                                        );
+                    String id = securityContext.getAuthentication().getName();
+                    return userService.getByUserId(id).flatMap(user ->
+                            customUserDetailsService.findByUsername(user.getUsername())
+                                    .flatMap(userDetails ->
+                                            userService.getByUserName(user.getUsername())
+                                                    .flatMap(u ->
+                                                            tokenService.getAllChangeRevokedExpired(user.getId())
+                                                                    .then(Mono.defer(() -> {
+                                                                        String tk = jwtUtil.generateToken(userDetails, user.getId());
+                                                                        return tokenService.saveToken(tk, user.getId(), false)
+                                                                                .thenReturn(new AuthResponse(tk, null));
+                                                                    }))
+                                                    )
 
-                            });
+                                    )
+                    );
+
                 });
     }
 

@@ -10,11 +10,12 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "categories")
-public class Category {
+@Document(collection = "tags")
+public class Tag {
     @Id
     private String id;
     private String name;
     private String description;
-    private String parentCategoryId;
+
+
 }

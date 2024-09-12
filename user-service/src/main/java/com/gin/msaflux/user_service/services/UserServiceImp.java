@@ -1,8 +1,10 @@
 package com.gin.msaflux.user_service.services;
 
+import com.gin.msaflux.user_service.dto.UserDto;
 import com.gin.msaflux.user_service.models.User;
 import com.gin.msaflux.user_service.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.context.ReactiveSecurityContextHolder;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
@@ -20,14 +22,19 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    public Mono<User> updateUser(User newUser) {
-        return userRepository.findById(newUser.getId())
-                .switchIfEmpty(Mono.error(new RuntimeException("Something wrong")))
-                .flatMap(user -> {
-                    user.setUpdatedAt(LocalDateTime.now());
-                    user.setAddresses(newUser.getAddresses());
-                    user.setPhoneNumber(newUser.getPhoneNumber());
-                    return userRepository.save(user);
-                });
+    public Mono<User> updateUser(UserDto newUser) {
+        return ReactiveSecurityContextHolder.getContext().flatMap(
+                securityContext -> userRepository.findById(securityContext.getAuthentication().getName())
+                        .switchIfEmpty(Mono.error(new RuntimeException("Something wrong")))
+                        .flatMap(user -> {
+                            if (!user.getUsername().equals(newUser.getUsername())) {
+                                return Mono.error(new RuntimeException("Username mismatch"));
+                            }
+                            user.setUpdatedAt(LocalDateTime.now());
+                            user.setAddresses(newUser.getAddresses());
+                            user.setPhoneNumber(newUser.getPhoneNumber());
+                            return userRepository.save(user);
+                        })
+        );
     }
 }

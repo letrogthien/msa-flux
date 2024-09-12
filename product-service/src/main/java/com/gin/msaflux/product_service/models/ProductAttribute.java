@@ -7,14 +7,16 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "categories")
-public class Category {
+@Document(collection = "product_attributes")
+public class ProductAttribute {
     @Id
     private String id;
+    private String productId;
     private String name;
-    private String description;
-    private String parentCategoryId;
+    private String value;
+
 }

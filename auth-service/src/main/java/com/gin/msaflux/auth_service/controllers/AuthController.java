@@ -32,7 +32,7 @@ public class AuthController {
 
 
     @ResponseStatus(HttpStatus.OK)
-    @PostMapping("refresh")
+    @PostMapping("refresh/token")
     public Mono<AuthResponse> refreshToken() {
         return authService.refreshToken();
     }

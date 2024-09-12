@@ -17,5 +17,8 @@ public class UserServiceImp {
     public Mono<User> getByUserName(final String name){
         return userRepository.findByUsername(name);
     }
+    public Mono<User> getByUserId(final String id){
+        return userRepository.findById(id);
+    }
     public Mono<User> save(final User user){return userRepository.save(user);}
 }

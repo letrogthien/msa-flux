@@ -1,17 +1,16 @@
 package com.gin.msaflux.product_service.serviceinterface;
 
+import com.gin.msaflux.product_service.dtos.ProductDto;
 import com.gin.msaflux.product_service.models.Product;
-import com.gin.msaflux.product_service.models.ProductImage;
-import com.gin.msaflux.product_service.request.ProductRq;
-import org.springframework.web.multipart.MultipartFile;
+import com.gin.msaflux.product_service.request.PageRequestPayload;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public interface ProductServiceInterface {
-    Mono<Product> addProduct(ProductRq productRq) ;
-    Mono<Void> updateProduct(ProductRq productRq) ;
-    Mono<Void> deleteProduct(ProductRq productRq) ;
-    Mono<Product> getProduct(Long productId) ;
-
+    Mono<Product> addProduct(ProductDto productDto) ;
+    Mono<Void> updateProduct(ProductDto productDto) ;
+    Mono<Void> deleteProduct(ProductDto productDto) ;
+    Mono<Product> getProduct(String productId) ;
+    Flux<Product> getWithPageable(PageRequestPayload pageRequestPayload);
 
 }

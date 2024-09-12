@@ -1,5 +1,6 @@
 package com.gin.msaflux.product_service.jwt;
 
+
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -25,12 +26,15 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class JwtFilter implements WebFilter {
     private final JwtUtil jwtUtil;
-    private final List<String> nonAuthenticate = List.of("/auth/login", "/auth/register");
+    private final List<String> nonAuthenticate = List.of("/product/all");
+
     @Override
     @NonNull
     public Mono<Void> filter(@NonNull ServerWebExchange exchange,@NonNull WebFilterChain chain) {
         String path = exchange.getRequest().getPath().toString();
-        boolean isNonAuthPath = nonAuthenticate.stream().anyMatch(path::contains);
+        String method = exchange.getRequest().getMethod().toString();
+        boolean isNonAuthPath = nonAuthenticate.stream().anyMatch(path::contains) || "GET".equalsIgnoreCase(method);
+
         if (isNonAuthPath) {
             return chain.filter(exchange);
         }
@@ -49,8 +53,7 @@ public class JwtFilter implements WebFilter {
             }
             Set<SimpleGrantedAuthority> authorities = jwtUtil.extractAuthorities(token).stream().map(SimpleGrantedAuthority::new).collect(Collectors.toSet());
             UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken
-                    = new UsernamePasswordAuthenticationToken(jwtUtil.extractUserName(token), null, authorities);
-            log.error(authorities.toString());
+                    = new UsernamePasswordAuthenticationToken(jwtUtil.extractUserId(token), null, authorities);
             SecurityContext securityContext = new SecurityContextImpl(usernamePasswordAuthenticationToken);
             return chain.filter(exchange).
                     contextWrite(ReactiveSecurityContextHolder.withSecurityContext(Mono.just(securityContext)));

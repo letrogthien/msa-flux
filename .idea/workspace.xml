@@ -5,66 +5,38 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="41d79a00-6e53-4368-9f00-6e2876837e4a" name="Changes" comment="commit 11/9/2024">
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/common/RoleType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/common/TokenType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/kafka/KafkaConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/kafka/KafkaConsumerService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/kafka/Readme.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/models/Category.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/models/Discount.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/models/JwtToken.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/models/Order.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/models/Payment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/models/Product.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/models/Review.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/models/Shop.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/models/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/repository/JwtTokenRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/repository/UserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/request/RegisterRq.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/services/AuthService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-composr-kafka/docker-compose.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/common/ApprovalStatus.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/config/Security.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/jwt/JwtFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/jwt/JwtUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/models/Category.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/models/Product.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/models/ProductCategory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/models/ProductImage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/repositories/CategoryRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/repositories/ProductCategoryRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/repositories/ProductImageRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/repositories/ProductRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/request/ProductRq.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/serviceinterface/ProductImageServiceInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/serviceinterface/ProductServiceInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/services/CategoryService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/services/DomainService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/services/ProductCategoryService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/services/ProductImageService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/services/ProductService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user-service/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user-service/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user-service/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user-service/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user-service/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user-service/src/main/java/com/gin/msaflux/user_service/UserServiceApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user-service/src/main/java/com/gin/msaflux/user_service/controllers/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user-service/src/main/java/com/gin/msaflux/user_service/jwt/JwtFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user-service/src/main/java/com/gin/msaflux/user_service/jwt/JwtUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user-service/src/main/java/com/gin/msaflux/user_service/kafka/KafkaConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user-service/src/main/java/com/gin/msaflux/user_service/kafka/KafkaConsumerService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user-service/src/main/java/com/gin/msaflux/user_service/kafka/Readme.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user-service/src/main/java/com/gin/msaflux/user_service/models/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user-service/src/main/java/com/gin/msaflux/user_service/repositories/UserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user-service/src/main/java/com/gin/msaflux/user_service/services/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user-service/src/main/java/com/gin/msaflux/user_service/services/UserServiceImp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user-service/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user-service/src/main/resources/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user-service/src/test/java/com/gin/msaflux/user_service/UserServiceApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/config/BeanConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/config/Security.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/controllers/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/controllers/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/jwt/JwtFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/jwt/JwtFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/jwt/JwtUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/jwt/JwtUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/serviceimp/AuthServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/serviceimp/AuthServiceImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/serviceimp/UserServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/serviceimp/UserServiceImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/config/Security.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/config/Security.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/jwt/JwtFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/jwt/JwtUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/models/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/models/Category.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/models/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/models/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/models/ProductCategory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/models/ProductImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/models/ProductImage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/repositories/CategoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/repositories/CategoryRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/repositories/ProductCategoryRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/repositories/ProductImageRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/repositories/ProductImageRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/repositories/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/repositories/ProductRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/request/ProductRq.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/serviceinterface/ProductServiceInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/serviceinterface/ProductServiceInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/services/DomainService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/services/ProductCategoryService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/services/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/services/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/gin/msaflux/user_service/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/gin/msaflux/user_service/controllers/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/gin/msaflux/user_service/jwt/JwtFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/gin/msaflux/user_service/jwt/JwtFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/gin/msaflux/user_service/jwt/JwtUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/gin/msaflux/user_service/jwt/JwtUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/gin/msaflux/user_service/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/gin/msaflux/user_service/services/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/gin/msaflux/user_service/services/UserServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/gin/msaflux/user_service/services/UserServiceImp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,8 +46,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -110,47 +82,50 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Docker.docker-composr-kafka.broker: Compose Deployment.executor": "Run",
-    "Docker.docker-composr-kafka.kafka1: Compose Deployment.executor": "Run",
-    "Docker.docker-composr-kafka: Compose Deployment.executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "Spring Boot.AuthServiceApplication.executor": "Run",
-    "Spring Boot.EurekaServiceApplication.executor": "Run",
-    "Spring Boot.GatewayServiceApplication.executor": "Run",
-    "Spring Boot.UserServiceApplication.executor": "Run",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/webflux_msa/auth-service/src/main/java/com/gin/msaflux/auth_service/serviceImp",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "run.configurations.included.in.services": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Docker.docker-composr-kafka.broker: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-composr-kafka.kafka1: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-composr-kafka: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;Spring Boot.AuthServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.EurekaServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.GatewayServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.ProductServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.UserServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/webflux_msa/product-service/src/main/java/com/gin/msaflux/product_service/jwt&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mongo"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mongo&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\webflux_msa\product-service\src\main\java\com\gin\msaflux\product_service\jwt" />
       <recent name="D:\webflux_msa\auth-service\src\main\java\com\gin\msaflux\auth_service\serviceImp" />
       <recent name="D:\webflux_msa\user-service\src\main\java\com\gin\msaflux\user_service\jwt" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.gin.msaflux.product_service.exception" />
       <recent name="com.gin.msaflux.user_service.jwt" />
     </key>
   </component>
@@ -164,7 +139,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.UserServiceApplication">
+  <component name="RunManager" selected="Spring Boot.ProductServiceApplication">
     <configuration name="AuthServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="auth-service" />
@@ -277,7 +252,11 @@
       <workItem from="1725900121625" duration="4712000" />
       <workItem from="1725932615532" duration="6218000" />
       <workItem from="1725970372844" duration="4469000" />
-      <workItem from="1725986228320" duration="2864000" />
+      <workItem from="1725986228320" duration="3260000" />
+      <workItem from="1726027392487" duration="2784000" />
+      <workItem from="1726049751165" duration="10518000" />
+      <workItem from="1726073993691" duration="3866000" />
+      <workItem from="1726136683526" duration="14608000" />
     </task>
     <task id="LOCAL-00001" summary="commit 11/9/2024">
       <option name="closed" value="true" />
@@ -287,7 +266,15 @@
       <option name="project" value="LOCAL" />
       <updated>1725989198196</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="commit 11/9/2024">
+      <option name="closed" value="true" />
+      <created>1725989375088</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1725989375088</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

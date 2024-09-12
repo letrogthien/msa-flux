@@ -26,12 +26,15 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class JwtFilter implements WebFilter {
     private final JwtUtil jwtUtil;
-    private final List<String> nonAuthenticate = List.of("/auth/login", "/auth/register");
+    private final List<String> nonAuthenticate = List.of("/user/profile");
+
     @Override
     @NonNull
     public Mono<Void> filter(@NonNull ServerWebExchange exchange,@NonNull WebFilterChain chain) {
         String path = exchange.getRequest().getPath().toString();
-        boolean isNonAuthPath = nonAuthenticate.stream().anyMatch(path::contains);
+        String method = exchange.getRequest().getMethod().toString();
+        boolean isNonAuthPath = nonAuthenticate.stream().anyMatch(path::contains) && "GET".equalsIgnoreCase(method);
+
         if (isNonAuthPath) {
             return chain.filter(exchange);
         }
@@ -50,7 +53,7 @@ public class JwtFilter implements WebFilter {
             }
             Set<SimpleGrantedAuthority> authorities = jwtUtil.extractAuthorities(token).stream().map(SimpleGrantedAuthority::new).collect(Collectors.toSet());
             UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken
-                    = new UsernamePasswordAuthenticationToken(jwtUtil.extractUserName(token), null, authorities);
+                    = new UsernamePasswordAuthenticationToken(jwtUtil.extractUserId(token), null, authorities);
             SecurityContext securityContext = new SecurityContextImpl(usernamePasswordAuthenticationToken);
             return chain.filter(exchange).
                     contextWrite(ReactiveSecurityContextHolder.withSecurityContext(Mono.just(securityContext)));

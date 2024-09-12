@@ -10,11 +10,14 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "categories")
-public class Category {
+@Document(collection = "inventory_logs")
+public class InventoryLog {
     @Id
     private String id;
-    private String name;
-    private String description;
-    private String parentCategoryId;
+    private String productId;
+    private int quantity;
+    private String action;
+    private String warehouseLocation;
+    private String timestamp;
+
 }
