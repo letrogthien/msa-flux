@@ -1,6 +1,7 @@
 package com.gin.msaflux.product_service.exception;
 
 
+import jakarta.ws.rs.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,13 @@ public class GlobalExceptionHandler {
         problemDetail.setProperty(TIME_STAMP, LocalDateTime.now());
         problemDetail.setTitle("BadCredentials");
         return new ResponseEntity<>(problemDetail, HttpStatus.UNAUTHORIZED);
+    }
+    @ExceptionHandler(NotFoundException.class)
+    public ResponseEntity<ProblemDetail> resourceNotFound(NotFoundException e){
+        ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, e.getMessage());
+        problemDetail.setProperty(TIME_STAMP, LocalDateTime.now());
+        problemDetail.setTitle("Exception Handle");
+        return new ResponseEntity<>(problemDetail, HttpStatus.NOT_FOUND);
     }
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ProblemDetail> handleException(Exception e){

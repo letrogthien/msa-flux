@@ -19,4 +19,5 @@ public class ProductImage {
     private String productId;
     private String imageUrl;
     private String altText;
+    private boolean isPrimary;
 }

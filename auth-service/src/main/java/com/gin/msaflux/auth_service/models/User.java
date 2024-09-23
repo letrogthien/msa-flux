@@ -17,15 +17,26 @@ import java.util.List;
 public class User {
     @Id
     private String id;
-    @NonNull
     private String username;
-    @NonNull
     private String password;
-    @NonNull
     private String email;
-    @NonNull
     private List<String> roles;
-    @NonNull
+
+    private String phoneNumber;
+    private List<Address> addresses;
     private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
+
+    @Data
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class Address {
+        private String addressLine1;
+        private String addressLine2;
+        private String city;
+        private String state;
+        private String postalCode;
+        private String country;
+    }
 }
 

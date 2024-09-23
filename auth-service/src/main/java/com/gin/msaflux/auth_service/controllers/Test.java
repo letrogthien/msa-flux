@@ -2,7 +2,7 @@ package com.gin.msaflux.auth_service.controllers;
 
 
 import com.gin.msaflux.auth_service.models.User;
-import com.gin.msaflux.auth_service.serviceimp.UserServiceImp;
+import com.gin.msaflux.auth_service.services.impl.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,7 +15,7 @@ import reactor.core.publisher.Mono;
 @RequestMapping("/test")
 @RequiredArgsConstructor
 public class Test {
-    private final UserServiceImp userService;
+    private final UserServiceImpl userService;
     @PostMapping("/all")
     public Flux<User> getAll() {
         return userService.getAll();

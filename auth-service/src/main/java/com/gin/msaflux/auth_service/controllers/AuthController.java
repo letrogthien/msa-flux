@@ -1,14 +1,16 @@
 package com.gin.msaflux.auth_service.controllers;
 
+import com.gin.msaflux.auth_service.dtos.UserDto;
 import com.gin.msaflux.auth_service.request.AuthRequest;
 import com.gin.msaflux.auth_service.request.ChangPasswordRq;
 import com.gin.msaflux.auth_service.request.ForgetPasswordRq;
 import com.gin.msaflux.auth_service.request.RegisterRq;
 import com.gin.msaflux.auth_service.response.AuthResponse;
-import com.gin.msaflux.auth_service.serviceimp.AuthServiceImp;
+import com.gin.msaflux.auth_service.services.impl.AuthServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.reactive.function.server.ServerRequest;
 import reactor.core.publisher.Mono;
 
 @RestController
@@ -16,12 +18,12 @@ import reactor.core.publisher.Mono;
 @ResponseBody
 @RequestMapping("api/v1/auth")
 public class AuthController {
-    private final AuthServiceImp authService;
+    private final AuthServiceImpl authService;
 
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("login")
     public Mono<AuthResponse> login (@RequestBody final AuthRequest authRequest) {
-        return authService.authenticate(authRequest.getUserName(), authRequest.getPassword());
+        return authService.authenticate(authRequest);
     }
 
     @ResponseStatus(HttpStatus.OK)
@@ -33,8 +35,11 @@ public class AuthController {
 
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("refresh/token")
-    public Mono<AuthResponse> refreshToken() {
-        return authService.refreshToken();
+    public Mono<AuthResponse> refreshToken(ServerRequest serverRequest) {
+        return Mono.justOrEmpty(serverRequest.headers().firstHeader("Authorization"))
+                .filter(header -> header.startsWith("Bearer "))
+                .map(header -> header.substring(7))
+                .flatMap(authService::refreshToken);
     }
 
     @ResponseStatus(HttpStatus.OK)
@@ -47,6 +52,16 @@ public class AuthController {
     @PostMapping("password/change")
     public Mono<String> changePassword(@RequestBody final ChangPasswordRq changPasswordRq) {
         return authService.changePassword(changPasswordRq);
+    }
+    @ResponseStatus(HttpStatus.OK)
+    @PostMapping("profile/{id}")
+    public Mono<UserDto> getUserProfile(@PathVariable final String id) {
+        return authService.getUserById(id);
+    }
+    @ResponseStatus(HttpStatus.OK)
+    @PostMapping("profile/update")
+    public Mono<Object> updateUserProfile(@RequestBody final UserDto userDto) {
+        return authService.updateUser(userDto);
     }
 
 }

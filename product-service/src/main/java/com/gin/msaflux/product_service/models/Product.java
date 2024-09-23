@@ -1,5 +1,6 @@
 package com.gin.msaflux.product_service.models;
 
+import com.gin.msaflux.product_service.common.ApprovalStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,12 +24,13 @@ public class Product {
     private String description;
     private String categoryId;
     private BigDecimal price;
-    private List<String> images;
     private Stock stock;
+    private String shopId;
     private String sellerId;
     private List<String> tags;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+    private ApprovalStatus approvalStatus;
 
     @Data
     @NoArgsConstructor

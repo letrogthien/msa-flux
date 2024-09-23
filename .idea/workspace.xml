@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="32440c6d-bb92-45c2-a729-021153cbf1d9" name="Changes" comment="commit 23/9/2024">
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-service/src/main/java/com/gin/msaflux/admin_service/AdminServiceApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-service/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-service/src/test/java/com/gin/msaflux/admin_service/AdminServiceApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/analytics-service/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/analytics-service/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/analytics-service/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/analytics-service/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/analytics-service/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/analytics-service/src/main/java/com/gin/msaflux/analytics_service/AnalyticsServiceApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/analytics-service/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/analytics-service/src/test/java/com/gin/msaflux/analytics_service/AnalyticsServiceApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/common/CommonService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/common/Const.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/common/Mapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/exception/CustomExpiredTokenException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/exception/CustomInvalidSignatureException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/exception/CustomInvalidTokenException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/exception/CustomMalformedTokenException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/exception/CustomUnsupportedTokenException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/models/Error.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/repository/ErrorRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/com/gin/msaflux/common/CommonApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/com/gin/msaflux/common/kafka/payload/AddProduct.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/com/gin/msaflux/common/kafka/payload/ForgotPassNotify.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/com/gin/msaflux/common/kafka/status/Status.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/test/java/com/gin/msaflux/common/CommonApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/inventory-service/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/inventory-service/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/inventory-service/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/inventory-service/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/inventory-service/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/inventory-service/src/main/java/com/gin/msaflux/inventory_service/InventoryServiceApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/inventory-service/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/inventory-service/src/test/java/com/gin/msaflux/inventory_service/InventoryServiceApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logging-service/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logging-service/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logging-service/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logging-service/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logging-service/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logging-service/src/main/java/com/gin/msaflux/logging_service/LoggingServiceApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logging-service/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logging-service/src/test/java/com/gin/msaflux/logging_service/LoggingServiceApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notification-service/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notification-service/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notification-service/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notification-service/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notification-service/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notification-service/src/main/java/com/gin/msaflux/notification_service/NotificationServiceApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notification-service/src/main/java/com/gin/msaflux/notification_service/kafka/KafkaConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notification-service/src/main/java/com/gin/msaflux/notification_service/kafka/KafkaListenerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notification-service/src/main/java/com/gin/msaflux/notification_service/kafka/Readme.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notification-service/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notification-service/src/test/java/com/gin/msaflux/notification_service/NotificationServiceApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order-service/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order-service/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order-service/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order-service/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order-service/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order-service/src/main/java/com/gin/msaflux/order_service/OrderServiceApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order-service/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order-service/src/test/java/com/gin/msaflux/order_service/OrderServiceApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/payment-service/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/payment-service/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/payment-service/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/payment-service/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/payment-service/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/payment-service/src/main/java/com/gin/msaflux/payment_service/PaymentServiceApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/payment-service/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/payment-service/src/test/java/com/gin/msaflux/payment_service/PaymentServiceApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/common/Const.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/common/Mapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/exception/CustomExpiredTokenException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/exception/CustomInvalidSignatureException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/exception/CustomInvalidTokenException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/exception/CustomMalformedTokenException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/exception/CustomUnsupportedTokenException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/kafka/KafkaConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/kafka/KafkaListenerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/kafka/Readme.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/kafka/payload/AddProduct.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/request/UpLoadFiles.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/services/impl/CategoryServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/services/impl/ProductImageServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/services/impl/ProductServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-service/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-service/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-service/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-service/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-service/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-service/src/main/java/com/gin/msaflux/review_service/ReviewServiceApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-service/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-service/src/test/java/com/gin/msaflux/review_service/ReviewServiceApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shipping-service/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shipping-service/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shipping-service/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shipping-service/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shipping-service/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shipping-service/src/main/java/com/gin/msaflux/shipping_service/ShippingServiceApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shipping-service/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shipping-service/src/test/java/com/gin/msaflux/shipping_service/ShippingServiceApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop-service/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop-service/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop-service/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop-service/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop-service/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop-service/src/main/java/com/gin/msaflux/shop_service/kafka/KafkaConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop-service/src/main/java/com/gin/msaflux/shop_service/kafka/KafkaListenerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop-service/src/main/java/com/gin/msaflux/shop_service/kafka/Readme.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop-service/src/main/java/com/gin/msaflux/shop_service/kafka/payload/AddProduct.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop-service/src/main/java/com/gin/msaflux/shop_service/models/Shop.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop-service/src/main/java/com/gin/msaflux/shop_service/repositories/ShopRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop-service/src/main/java/com/gin/msaflux/shop_service/services/ShopService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop-service/src/main/java/com/gin/msaflux/shop_service/services/imp/ShopServiceImp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop-service/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop-service/src/test/java/com/gin/msaflux/shop_service/ShopServiceApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/config/CustomReactiveAuthenticationManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/config/CustomReactiveAuthenticationManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/config/Security.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/config/Security.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/controllers/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/controllers/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/controllers/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/controllers/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/exception/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/gmail/EmailSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/notification-service/src/main/java/com/gin/msaflux/notification_service/gmail/EmailSender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/jwt/JwtFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/jwt/JwtFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/jwt/JwtUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/jwt/JwtUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/kafka/KafkaConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/kafka/KafkaConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/kafka/KafkaConsumerService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/models/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/serviceimp/AuthServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/services/impl/AuthServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/serviceimp/CustomUserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/services/impl/CustomUserDetailsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/serviceimp/TokenServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/services/impl/TokenServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/serviceimp/UserServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/services/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/services/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/services/AuthService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/controllers/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/controllers/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/dtos/ProductDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/dtos/ProductDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/exception/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/jwt/JwtFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/jwt/JwtFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/jwt/JwtUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/jwt/JwtUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/models/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/models/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/models/ProductImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/models/ProductImage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/repositories/CategoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/repositories/CategoryRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/serviceinterface/ProductImageServiceInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/serviceinterface/ProductServiceInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/services/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/services/CategoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/services/ProductImageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/services/ProductImageService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/services/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/services/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/admin-service/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/admin-service/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/admin-service/mvnw" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/admin-service/mvnw.cmd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/admin-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/gin/msaflux/user_service/UserServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop-service/src/main/java/com/gin/msaflux/shop_service/ShopServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/gin/msaflux/user_service/comon/Convert.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/gin/msaflux/user_service/config/Security.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/gin/msaflux/user_service/controllers/UserController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/gin/msaflux/user_service/dto/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/dtos/UserDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/gin/msaflux/user_service/exception/GlobalExceptionHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/gin/msaflux/user_service/jwt/JwtFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/gin/msaflux/user_service/jwt/JwtUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/gin/msaflux/user_service/kafka/KafkaConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/gin/msaflux/user_service/kafka/KafkaConsumerService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/gin/msaflux/user_service/kafka/Readme.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/gin/msaflux/user_service/models/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/gin/msaflux/user_service/repositories/UserRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/gin/msaflux/user_service/services/UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/gin/msaflux/user_service/services/UserServiceImp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/resources/application.yml" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;letrogthien&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/letrogthien/msa-flux.git&quot;,
+    &quot;accountId&quot;: &quot;acfac5ec-f5f0-4c18-8984-3cf7c500ed33&quot;
+  }
+}</component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2lymbexXxQ5rUlET0x5ipd9K6CN" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;Spring Boot.AuthServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.EurekaServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.GatewayServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.NotificationServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.ProductServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;21 (2)&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/webflux_msa/product-service/src/main/java/com/gin/msaflux/product_service/exception&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.gin.msaflux.auth_service.exception" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\webflux_msa\product-service\src\main\java\com\gin\msaflux\product_service\exception" />
+      <recent name="D:\webflux_msa\common\src\main\java\com\gin\msaflux\common\kafka" />
+      <recent name="D:\webflux_msa\common\src\main\common" />
+      <recent name="D:\webflux_msa\notification-service\src\main\java\com\gin\msaflux\notification_service" />
+      <recent name="D:\webflux_msa\shop-service\src\main\java\com\gin\msaflux\shop_service\kafka" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.gin.msaflux.notification_service.kafka.payload" />
+      <recent name="com.gin.msaflux.product_service.controllers" />
+      <recent name="com.gin.msaflux.shop_service.kafka" />
+      <recent name="com.gin.msaflux.product_service.common" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="KtorApplicationConfigurationType" />
+        <option value="MicronautRunConfigurationType" />
+        <option value="QuarkusRunConfigurationType" />
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.AuthServiceApplication">
+    <configuration name="AuthServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="auth-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.gin.msaflux.auth_service.AuthServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CommonApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="common" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.gin.msaflux.common.CommonApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EurekaServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="eureka-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.gin.msaflux.eureka_service.EurekaServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GatewayServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="gateway-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.gin.msaflux.gateway_service.GatewayServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NotificationServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="notification-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.gin.msaflux.notification_service.NotificationServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="product_service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.gin.msaflux.product_service.ProductServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ShopServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="shop-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.gin.msaflux.shop_service.ShopServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.20224.387" />
+        <option value="bundled-js-predefined-d6986cc7102b-410509235cf1-JavaScript-IU-242.20224.387" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task id="LOCAL-00001" summary="commit 12/9/2024">
+      <option name="closed" value="true" />
+      <created>1726160819572</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1726160819572</updated>
+    </task>
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="32440c6d-bb92-45c2-a729-021153cbf1d9" name="Changes" comment="commit 12/9/2024" />
+      <created>1726202688724</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1726202688724</updated>
+      <workItem from="1726202693737" duration="4097000" />
+      <workItem from="1726221413173" duration="2468000" />
+      <workItem from="1726227239328" duration="1175000" />
+      <workItem from="1726243345371" duration="7223000" />
+      <workItem from="1726302551572" duration="7360000" />
+      <workItem from="1726334478415" duration="490000" />
+      <workItem from="1726379145474" duration="7240000" />
+      <workItem from="1726418513820" duration="6070000" />
+      <workItem from="1726477509262" duration="9550000" />
+      <workItem from="1726665989811" duration="1282000" />
+      <workItem from="1726675512129" duration="112000" />
+      <workItem from="1726677415747" duration="3241000" />
+      <workItem from="1726717127541" duration="505000" />
+      <workItem from="1726726250328" duration="7145000" />
+      <workItem from="1726735969263" duration="172000" />
+      <workItem from="1726746528537" duration="12831000" />
+      <workItem from="1726849922565" duration="8843000" />
+      <workItem from="1726916815045" duration="5625000" />
+      <workItem from="1726934085615" duration="1597000" />
+      <workItem from="1726978068545" duration="32122000" />
+      <workItem from="1727058003669" duration="1288000" />
+      <workItem from="1727078600672" duration="716000" />
+      <workItem from="1727080856741" duration="10022000" />
+      <workItem from="1727097376228" duration="2950000" />
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="commit 12/9/2024" />
+    <MESSAGE value="commit 23/9/2024" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit 23/9/2024" />
+  </component>
+</project>

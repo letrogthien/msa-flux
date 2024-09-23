@@ -1,10 +1,12 @@
 package com.gin.msaflux.auth_service.config;
 
+import com.gin.msaflux.auth_service.common.Const;
 import com.gin.msaflux.auth_service.common.RoleType;
 import com.gin.msaflux.auth_service.jwt.JwtFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.security.config.web.server.SecurityWebFiltersOrder;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
@@ -28,8 +30,12 @@ public class Security {
     public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
         http.csrf(ServerHttpSecurity.CsrfSpec::disable);
         http.authorizeExchange(exchange ->
-            exchange.pathMatchers("/test/all").hasAuthority(RoleType.CUSTOMER.name())
-                    .anyExchange().permitAll()
+            exchange
+                    .pathMatchers(HttpMethod.GET).permitAll()
+                    .pathMatchers(Const.AUTH_PART_LOGIN).permitAll()
+                    .pathMatchers(Const.AUTH_PART_REGISTER).permitAll()
+                    .pathMatchers(Const.AUTH_PART_FORGET_PASSWORD).permitAll()
+                    .anyExchange().authenticated()
             );
         http.addFilterAfter(jwtFilter, SecurityWebFiltersOrder.AUTHENTICATION);
         return http.build();
