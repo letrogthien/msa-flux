@@ -40,20 +40,15 @@ public class JwtFilter implements WebFilter {
     @Override
     @NonNull
     public Mono<Void> filter(@NonNull ServerWebExchange exchange, @NonNull WebFilterChain chain) {
-        String path = exchange.getRequest().getPath().toString();
-        boolean isNonAuthPath = nonAuthenticate.stream().anyMatch(path::contains);
-        if (isNonAuthPath || exchange.getRequest().getMethod().matches("GET")) {
-            return chain.filter(exchange);
-        }
 
         String authHeader = exchange.getRequest().getHeaders().getFirst("Authorization");
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
-
-            return onError(exchange, "Missing or invalid Authorization header");
+            return chain.filter(exchange);
         }
-
+        if (exchange.getRequest().getMethod().matches("GET")){
+            return chain.filter(exchange);
+        }
         final String token = authHeader.substring(7);
-
         if (!jwtUtil.isTokenValid(token)) {
             return onError(exchange, "Invalid JWT token");
         }

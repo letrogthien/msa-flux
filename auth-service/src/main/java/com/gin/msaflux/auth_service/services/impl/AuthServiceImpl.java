@@ -132,9 +132,9 @@ public class AuthServiceImpl implements AuthService {
     public Mono<String> changePassword(final ChangPasswordRq changPasswordRq) {
         return ReactiveSecurityContextHolder.getContext().flatMap(
                 securityContext ->
-                        customUserDetailsService.findByUsername(securityContext.getAuthentication().getName())
+                        customUserDetailsService.findByUserId(securityContext.getAuthentication().getName())
                                 .filter(user -> user.getPassword().equals(passwordEncoder.encode(changPasswordRq.getOldPassword())))
-                                .switchIfEmpty(Mono.error(new BadCredentialsException("old pass incorrect")))
+                                .filter(user -> passwordEncoder.matches(changPasswordRq.getOldPassword(), user.getPassword()))
                                 .flatMap(
                                         userDetails ->
                                                 userService.getByUserName(userDetails.getUsername())

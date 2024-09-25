@@ -1,4 +1,5 @@
-package com.gin.msaflux.product_service.models;
+package com.gin.msaflux.review_service.models;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -7,17 +8,25 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.LocalDateTime;
 
-
-@Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
+@Data
 @Builder
-@Document(collection = "product_attributes")
-public class ProductAttribute {
+@Document(collection = "reviews")
+public class Review {
+
     @Id
     private String id;
+
+    private String userId;
+
     private String productId;
-    private String name;
-    private String value;
+
+    private int rating;
+
+    private String reviewText;
+
+    private LocalDateTime createdAt;
 }

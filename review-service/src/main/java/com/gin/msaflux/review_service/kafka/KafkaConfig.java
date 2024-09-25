@@ -1,4 +1,4 @@
-package com.gin.msaflux.notification_service.kafka;
+package com.gin.msaflux.review_service.kafka;
 
 
 
@@ -60,20 +60,7 @@ public class KafkaConfig {
         return factory;
     }
 
-    @Bean
-    public NewTopic registerNotifyTopic(){
-        return TopicBuilder.name("register-notify-topic")
-                .replicas(1)
-                .partitions(3)
-                .build();
-    }
-    @Bean
-    public NewTopic forgotPasswordTopic(){
-        return TopicBuilder.name("forget-password-notify-topic")
-                .replicas(1)
-                .partitions(3)
-                .build();
-    }
+
 
 
 

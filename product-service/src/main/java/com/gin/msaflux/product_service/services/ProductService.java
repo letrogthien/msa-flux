@@ -10,7 +10,7 @@ import reactor.core.publisher.Mono;
 public interface ProductService {
     Mono<Product> addProduct(ProductDto product) ;
     Mono<Product> updateProduct(ProductDto product) ;
-    Mono<Void> deleteProduct(Product product) ;
+    Mono<Void> deleteProduct(String productId) ;
     Mono<Product> getProduct(String productId) ;
     Flux<Product> getWithPageable(PageRequestPayload pageRequestPayload);
 

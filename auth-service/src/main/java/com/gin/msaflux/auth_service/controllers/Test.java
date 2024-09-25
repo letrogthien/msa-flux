@@ -16,7 +16,7 @@ import reactor.core.publisher.Mono;
 @RequiredArgsConstructor
 public class Test {
     private final UserServiceImpl userService;
-    @PostMapping("/all")
+    @GetMapping("/all")
     public Flux<User> getAll() {
         return userService.getAll();
     }

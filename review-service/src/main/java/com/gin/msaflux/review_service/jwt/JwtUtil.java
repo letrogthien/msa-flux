@@ -1,4 +1,4 @@
-package com.gin.msaflux.product_service.jwt;
+package com.gin.msaflux.review_service.jwt;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;

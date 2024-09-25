@@ -13,6 +13,7 @@
         <module name="auth-service" />
         <module name="common" />
         <module name="gateway-service" />
+        <module name="review-service" />
         <module name="shop-service" />
         <module name="product_service" />
         <module name="notification-service" />
@@ -30,6 +31,7 @@
       <module name="gateway-service" options="-parameters" />
       <module name="notification-service" options="-parameters" />
       <module name="product_service" options="-parameters" />
+      <module name="review-service" options="-parameters" />
       <module name="shop-service" options="-parameters" />
       <module name="user_service" options="-parameters" />
     </option>

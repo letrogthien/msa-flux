@@ -1,6 +1,6 @@
-package com.gin.msaflux.product_service.config;
+package com.gin.msaflux.review_service.config;
 
-import com.gin.msaflux.product_service.jwt.JwtFilter;
+import com.gin.msaflux.review_service.jwt.JwtFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

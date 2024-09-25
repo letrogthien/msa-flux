@@ -29,6 +29,7 @@ public class Security {
     @Bean
     public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
         http.csrf(ServerHttpSecurity.CsrfSpec::disable);
+        http.addFilterAfter(jwtFilter, SecurityWebFiltersOrder.AUTHENTICATION);
         http.authorizeExchange(exchange ->
             exchange
                     .pathMatchers(HttpMethod.GET).permitAll()
@@ -37,7 +38,7 @@ public class Security {
                     .pathMatchers(Const.AUTH_PART_FORGET_PASSWORD).permitAll()
                     .anyExchange().authenticated()
             );
-        http.addFilterAfter(jwtFilter, SecurityWebFiltersOrder.AUTHENTICATION);
+
         return http.build();
     }
 

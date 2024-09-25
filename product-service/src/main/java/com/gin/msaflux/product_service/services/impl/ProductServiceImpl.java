@@ -4,9 +4,11 @@ import com.gin.msaflux.product_service.common.ApprovalStatus;
 import com.gin.msaflux.product_service.dtos.ProductDto;
 import com.gin.msaflux.product_service.kafka.payload.AddProduct;
 import com.gin.msaflux.product_service.models.Product;
+import com.gin.msaflux.product_service.models.ProductAttribute;
 import com.gin.msaflux.product_service.repositories.CategoryRepository;
 import com.gin.msaflux.product_service.repositories.ProductRepository;
 import com.gin.msaflux.product_service.request.PageRequestPayload;
+import com.gin.msaflux.product_service.request.ProductAttributeRq;
 import com.gin.msaflux.product_service.services.ProductService;
 import jakarta.ws.rs.NotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -92,9 +94,9 @@ public class ProductServiceImpl implements ProductService {
     * note: not delete immediately, set status to delete and delete on night
      */
     @Override
-    public Mono<Void> deleteProduct(Product product) {
+    public Mono<Void> deleteProduct(String productId) {
         String userId = SecurityContextHolder.getContext().getAuthentication().getName();
-        return productRepository.findById(product.getId())
+        return productRepository.findById(productId)
                 .flatMap(p-> {
                     if (!p.getSellerId().equals(userId)) {
                         return Mono.error(new BadCredentialsException("You are not authorized to delete this product"));
@@ -113,6 +115,7 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findAll().skip(pageRequestPayload.getPage() * pageRequestPayload.getSize())
                 .take(pageRequestPayload.getSize());
     }
+
 
     private Product changePro(ProductDto root, Product productChange) {
         if (productChange.getName() != null) {

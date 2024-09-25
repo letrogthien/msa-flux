@@ -26,4 +26,5 @@ public class KafkaListenerService {
         return emailSender.sendEmail(forgotPassNotify.getEmail(), "new pass", forgotPassNotify.getNewPassword());
     }
 
+
 }

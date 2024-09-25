@@ -1,4 +1,4 @@
-package com.gin.msaflux.product_service.jwt;
+package com.gin.msaflux.review_service.jwt;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -29,6 +29,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class JwtFilter implements WebFilter {
     private final JwtUtil jwtUtil;
+
 
     @SneakyThrows
     @Override

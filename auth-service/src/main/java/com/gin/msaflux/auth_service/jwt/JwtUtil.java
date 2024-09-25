@@ -98,24 +98,14 @@ public class JwtUtil {
     }
 
     private Claims extractAllClaims(String token) {
-        try {
+
             return Jwts
                     .parserBuilder()
                     .setSigningKey(getSignInKey())
                     .build()
                     .parseClaimsJws(token)
                     .getBody();
-        } catch (ExpiredJwtException e) {
-            throw new CustomExpiredTokenException("Token has expired");
-        } catch (UnsupportedJwtException e) {
-            throw new CustomUnsupportedTokenException("Unsupported JWT token");
-        } catch (MalformedJwtException e) {
-            throw new CustomMalformedTokenException("Malformed JWT token");
-        } catch (SignatureException e) {
-            throw new CustomInvalidSignatureException("Invalid JWT signature");
-        } catch (IllegalArgumentException e) {
-            throw new CustomInvalidTokenException("JWT token is empty or null");
-        }
+
     }
 
     private Key getSignInKey() {
