@@ -7,23 +7,15 @@ import com.gin.msaflux.product_service.request.UpLoadFiles;
 import com.gin.msaflux.product_service.services.ProductImageService;
 import lombok.RequiredArgsConstructor;
 
-import org.apache.commons.io.FilenameUtils;
-import org.reactivestreams.Publisher;
 import org.springframework.http.codec.multipart.FilePart;
 import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.ReactiveAuthenticationManager;
 import org.springframework.security.core.context.ReactiveSecurityContextHolder;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-
-import java.io.Flushable;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
 
 @Service
 @RequiredArgsConstructor
@@ -66,16 +58,6 @@ public class ProductImageServiceImpl implements ProductImageService {
         return null;
     }
 
-    private boolean isValidExtension(String filename) {
-        String extension = "";
-
-        int i = filename.lastIndexOf('.');
-        if (i > 0) {
-            extension = filename.substring(i + 1).toLowerCase();
-        }
-
-        return extension.equals("jpg") || extension.equals("png");
-    }
 
 
 }

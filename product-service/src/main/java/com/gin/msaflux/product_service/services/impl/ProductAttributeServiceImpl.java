@@ -25,7 +25,6 @@ public class ProductAttributeServiceImpl implements ProductAttributeService {
                                 if (!product.getSellerId().equalsIgnoreCase(securityContext.getAuthentication().getName())){
                                     return Mono.error(new BadCredentialsException("unauthorized"));
                                 }
-
                                 return productAttributeRepository.save(ProductAttribute.builder()
                                         .productId(product.getId())
                                         .value(productAttributeRq.getValue())

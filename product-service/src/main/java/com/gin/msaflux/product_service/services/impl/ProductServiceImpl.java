@@ -4,11 +4,8 @@ import com.gin.msaflux.product_service.common.ApprovalStatus;
 import com.gin.msaflux.product_service.dtos.ProductDto;
 import com.gin.msaflux.product_service.kafka.payload.AddProduct;
 import com.gin.msaflux.product_service.models.Product;
-import com.gin.msaflux.product_service.models.ProductAttribute;
 import com.gin.msaflux.product_service.repositories.CategoryRepository;
 import com.gin.msaflux.product_service.repositories.ProductRepository;
-import com.gin.msaflux.product_service.request.PageRequestPayload;
-import com.gin.msaflux.product_service.request.ProductAttributeRq;
 import com.gin.msaflux.product_service.services.ProductService;
 import jakarta.ws.rs.NotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -20,6 +17,7 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 
@@ -29,7 +27,6 @@ public class ProductServiceImpl implements ProductService {
     private final ProductRepository productRepository;
     private final CategoryRepository categoryRepository;
     private final KafkaTemplate<String, Object> kafkaTemplate;
-
     /*
      * adds product to DB and published message to kafka
      * @param product
@@ -54,7 +51,6 @@ public class ProductServiceImpl implements ProductService {
                             .description(productDto.getDescription())
                             .categoryId(productDto.getCategoryId())
                             .build();
-
                     return productRepository.save(product)
                             .flatMap(savedProduct -> {
                                 AddProduct checkOwnerShop = AddProduct.builder()
@@ -91,7 +87,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     /*
-    * note: not delete immediately, set status to delete and delete on night
+    *
      */
     @Override
     public Mono<Void> deleteProduct(String productId) {
@@ -111,9 +107,19 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Flux<Product> getWithPageable(PageRequestPayload pageRequestPayload) {
-        return productRepository.findAll().skip(pageRequestPayload.getPage() * pageRequestPayload.getSize())
-                .take(pageRequestPayload.getSize());
+    public Flux<Product> getWithPageable(Long page, Long size) {
+        return productRepository.findAll().skip(page * size)
+                .take(size);
+    }
+
+    @Override
+    public Flux<Product> getWithFilterPageable(Long page, Long size, String category, Long rating, BigDecimal price) {
+        return productRepository.getWithFilterPageable(category, rating, price).skip(page * size).take(size);
+    }
+
+    @Override
+    public Flux<Product> searchProductPageable(Long page, Long size, String searchQuery) {
+        return productRepository.getWithKeyWordPageable(searchQuery).skip(page * size).take(size);
     }
 
 

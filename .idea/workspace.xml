@@ -4,32 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="32440c6d-bb92-45c2-a729-021153cbf1d9" name="Changes" comment="commit 23/9/2024">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="32440c6d-bb92-45c2-a729-021153cbf1d9" name="Changes" comment="commit 25/9/2024">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/config/CustomReactiveAuthenticationManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/config/CustomReactiveAuthenticationManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/config/Security.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/config/Security.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/controllers/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/controllers/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/jwt/JwtFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/jwt/JwtFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/jwt/JwtUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/jwt/JwtUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/services/impl/AuthServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/services/impl/AuthServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notification-service/src/main/java/com/gin/msaflux/notification_service/kafka/KafkaConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/notification-service/src/main/java/com/gin/msaflux/notification_service/kafka/KafkaConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notification-service/src/main/java/com/gin/msaflux/notification_service/kafka/KafkaListenerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/notification-service/src/main/java/com/gin/msaflux/notification_service/kafka/KafkaListenerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/config/Security.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/config/Security.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/jwt/JwtFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/jwt/JwtUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/kafka/KafkaConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/kafka/KafkaConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/models/ProductAttribute.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/models/ProductAttribute.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/request/UpLoadFiles.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/request/UpLoadFiles.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/controllers/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/controllers/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/jwt/JwtUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/jwt/JwtUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/models/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/models/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/models/Tag.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/models/Tag.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/repositories/CategoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/repositories/CategoryRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/repositories/ProductAttributeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/repositories/ProductAttributeRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/repositories/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/repositories/ProductRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/services/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/services/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/services/impl/ProductAttributeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/services/impl/ProductAttributeServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/services/impl/ProductImageServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/services/impl/ProductImageServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/services/impl/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/services/impl/ProductServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/review-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/review-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-service/src/main/java/com/gin/msaflux/review_service/services/ReviewService.java" beforeDir="false" afterPath="$PROJECT_DIR$/review-service/src/main/java/com/gin/msaflux/review_service/services/ReviewService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-service/src/main/java/com/gin/msaflux/review_service/services/imp/ServiceReviewImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/review-service/src/main/java/com/gin/msaflux/review_service/services/imp/ReviewServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,36 +63,36 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "Spring Boot.AuthServiceApplication.executor": "Run",
-    "Spring Boot.EurekaServiceApplication.executor": "Run",
-    "Spring Boot.GatewayServiceApplication.executor": "Run",
-    "Spring Boot.NotificationServiceApplication.executor": "Run",
-    "Spring Boot.ProductServiceApplication.executor": "Run",
-    "git-widget-placeholder": "main",
-    "jdk.selected.JAVA_MODULE": "21 (2)",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/webflux_msa/review-service/src/main/java/com/gin/msaflux/review_service",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "run.configurations.included.in.services": "true",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;Spring Boot.AuthServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.EurekaServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.GatewayServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.NotificationServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.ProductServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;21 (2)&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/webflux_msa/review-service/src/main/java/com/gin/msaflux/review_service&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.gin.msaflux.review_service.request" />
@@ -249,6 +238,13 @@
       <workItem from="1727097376228" duration="16165000" />
       <workItem from="1727173509412" duration="7034000" />
       <workItem from="1727188000140" duration="6602000" />
+      <workItem from="1727259309152" duration="1268000" />
+      <workItem from="1727425622716" duration="5528000" />
+      <workItem from="1727542568908" duration="1648000" />
+      <workItem from="1727544237224" duration="561000" />
+      <workItem from="1727544810626" duration="174000" />
+      <workItem from="1727544995226" duration="2788000" />
+      <workItem from="1727617204409" duration="8893000" />
     </task>
     <task id="LOCAL-00002" summary="commit 23/9/2024">
       <option name="closed" value="true" />
@@ -266,15 +262,41 @@
       <option name="project" value="LOCAL" />
       <updated>1727100896965</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="commit 25/9/2024">
+      <option name="closed" value="true" />
+      <created>1727259464902</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1727259464902</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnknownFeatures">
+    <option featureType="dependencySupport" implementationName="java:org.springframework.security:spring-security-core" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-core" />
+    <option featureType="dependencySupport" implementationName="java:org.apache.kafka:kafka_2.13" />
+    <option featureType="dependencySupport" implementationName="java:jakarta.validation:jakarta.validation-api" />
+    <option featureType="dependencySupport" implementationName="java:io.projectreactor:reactor-core" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.data:spring-data-commons" />
+    <option featureType="dependencySupport" implementationName="executable:kubectl" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.cloud:spring-cloud-context" />
+    <option featureType="dependencySupport" implementationName="java:org.hibernate.validator:hibernate-validator" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-webmvc" />
+    <option featureType="dependencySupport" implementationName="java:org.projectlombok:lombok" />
+    <option featureType="dependencySupport" implementationName="executable:docker" />
+    <option featureType="dependencySupport" implementationName="java:jakarta.ws.rs:jakarta.ws.rs-api" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-messaging" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.boot:spring-boot" />
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="commit 12/9/2024" />
     <MESSAGE value="commit 23/9/2024" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit 23/9/2024" />
+    <MESSAGE value="commit 25/9/2024" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit 25/9/2024" />
   </component>
 </project>
