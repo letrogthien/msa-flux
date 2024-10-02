@@ -36,7 +36,7 @@ public class PaymentService {
                         Mono.fromCallable(() -> {
                             String vnpVersion = "2.1.0";
                             String vnpCommand = "pay";
-                            String vnpTmnCode = PaymentConfig.vnpTmnCode;
+                            String vnpTmnCode = PaymentConfig.VNP_TMN_CODE;
                             String orderType = "order-type";
                             String ip = PaymentConfig.getIpAddress(serverRequest);
 
@@ -54,7 +54,7 @@ public class PaymentService {
                             String locate = "vn";
                             vnpParams.put("vnp_Locale", locate);
 
-                            String urlReturn = PaymentConfig.vnpReturnurl;
+                            String urlReturn = PaymentConfig.VNP_RETURN_URL;
                             vnpParams.put("vnp_ReturnUrl", urlReturn);
                             vnpParams.put("vnp_IpAddr", ip);
 
@@ -86,9 +86,9 @@ public class PaymentService {
                             }
 
                             String queryUrl = query.toString();
-                            String vnpSecureHash = PaymentConfig.hmacSHA512(PaymentConfig.vnpHashSecret, hashData.toString());
+                            String vnpSecureHash = PaymentConfig.hmacSHA512(PaymentConfig.VNP_HASH_SECRET, hashData.toString());
                             queryUrl += "&vnp_SecureHash=" + vnpSecureHash;
-                            return PaymentConfig.vnpPayUrl + "?" + queryUrl;
+                            return PaymentConfig.VNP_PAY_URL + "?" + queryUrl;
                         })
                 );
     }

@@ -1,6 +1,7 @@
 package com.gin.msaflux.payment_service;
 
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
@@ -8,51 +9,24 @@ import reactor.core.publisher.Mono;
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.*;
 
 @Component
 
 public class PaymentConfig {
     private static final Random rnd = new Random();
-    public static String vnpPayUrl = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-    public static String vnpReturnurl = "http://localhost:8088/payment/returnUrl";
-    public static String vnpTmnCode = "XTNKANRH";
-    public static String vnpHashSecret = "FNABMOP7AXKQFVWBIZE63HEIW7NAHO96";
+    @Value("${vnp.url.pay}")
+    public static String VNP_PAY_URL ;
+    @Value("${vnp.url.return}")
+    public static String VNP_RETURN_URL  ;
+    @Value("${vnp.tmn.code}")
+    public static String VNP_TMN_CODE ;
+    @Value("${vnp.hash.secret}")
+    public static String VNP_HASH_SECRET ;
 
 
-    public Mono<String> md5(String message) {
-        return Mono.fromCallable(() -> {
-            try {
-                MessageDigest md = MessageDigest.getInstance("MD5");
-                byte[] hash = md.digest(message.getBytes(StandardCharsets.UTF_8));
-                StringBuilder sb = new StringBuilder(2 * hash.length);
-                for (byte b : hash) {
-                    sb.append(String.format("%02x", b & 0xff));
-                }
-                return sb.toString();
-            } catch (NoSuchAlgorithmException e) {
-                return "";
-            }
-        });
-    }
 
-    public Mono<String> sha256(String message) {
-        return Mono.fromCallable(()->{
-            String digest;
-            MessageDigest md = MessageDigest.getInstance("SHA-256");
-            byte[] hash = md.digest(message.getBytes(StandardCharsets.UTF_8));
-            StringBuilder sb = new StringBuilder(2 * hash.length);
-            for (byte b : hash) {
-                sb.append(String.format("%02x", b & 0xff));
-            }
-            digest = sb.toString();
-            return digest;
-        });
-    }
 
-    //Util for VNPAY
     public static Mono<String> hashAllFields(Map<String, String> fields) {
         return Mono.fromCallable(()->{
             List<String> fieldNames = new ArrayList<>(fields.keySet());
@@ -71,7 +45,7 @@ public class PaymentConfig {
                     sb.append("&");
                 }
             }
-            return hmacSHA512(vnpHashSecret,sb.toString());
+            return hmacSHA512(VNP_HASH_SECRET,sb.toString());
         });
     }
 

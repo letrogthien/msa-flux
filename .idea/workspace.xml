@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="32440c6d-bb92-45c2-a729-021153cbf1d9" name="Changes" comment="add payment feature with VNPAY">
+    <list default="true" id="32440c6d-bb92-45c2-a729-021153cbf1d9" name="Changes" comment="add respone for banking">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/payment-service/src/main/java/com/gin/msaflux/payment_service/PaymentConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/payment-service/src/main/java/com/gin/msaflux/payment_service/PaymentConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/payment-service/src/main/java/com/gin/msaflux/payment_service/PaymentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/payment-service/src/main/java/com/gin/msaflux/payment_service/PaymentController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/payment-service/src/main/java/com/gin/msaflux/payment_service/PaymentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/payment-service/src/main/java/com/gin/msaflux/payment_service/PaymentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/payment-service/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -263,7 +263,8 @@
       <workItem from="1727801707192" duration="8517000" />
       <workItem from="1727837116012" duration="688000" />
       <workItem from="1727861099668" duration="1922000" />
-      <workItem from="1727869624615" duration="2920000" />
+      <workItem from="1727869624615" duration="5065000" />
+      <workItem from="1727874772104" duration="245000" />
     </task>
     <task id="LOCAL-00002" summary="commit 23/9/2024">
       <option name="closed" value="true" />
@@ -305,7 +306,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727870062956</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="add respone for banking">
+      <option name="closed" value="true" />
+      <created>1727873030660</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1727873030660</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -334,6 +343,7 @@
     <MESSAGE value="commit 25/9/2024" />
     <MESSAGE value="add search product with pageable, filter product and pageable" />
     <MESSAGE value="add payment feature with VNPAY" />
-    <option name="LAST_COMMIT_MESSAGE" value="add payment feature with VNPAY" />
+    <MESSAGE value="add respone for banking" />
+    <option name="LAST_COMMIT_MESSAGE" value="add respone for banking" />
   </component>
 </project>
