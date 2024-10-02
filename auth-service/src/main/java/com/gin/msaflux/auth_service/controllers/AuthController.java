@@ -9,8 +9,9 @@ import com.gin.msaflux.auth_service.response.AuthResponse;
 import com.gin.msaflux.auth_service.services.impl.AuthServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+
+import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.reactive.function.server.ServerRequest;
 import reactor.core.publisher.Mono;
 
 @RestController
@@ -35,8 +36,8 @@ public class AuthController {
 
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("refresh/token")
-    public Mono<AuthResponse> refreshToken(ServerRequest serverRequest) {
-        return Mono.justOrEmpty(serverRequest.headers().firstHeader("Authorization"))
+    public Mono<AuthResponse> refreshToken(ServerHttpRequest serverRequest) {
+        return Mono.justOrEmpty(serverRequest.getHeaders().getFirst("Authorization"))
                 .filter(header -> header.startsWith("Bearer "))
                 .map(header -> header.substring(7))
                 .flatMap(authService::refreshToken);

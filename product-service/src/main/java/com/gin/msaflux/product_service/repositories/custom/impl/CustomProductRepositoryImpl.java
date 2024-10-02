@@ -24,8 +24,8 @@ public class CustomProductRepositoryImpl implements CustomProductRepository {
             return Flux.empty();
         }
         Criteria criteria = new Criteria().orOperator(
-                Criteria.where("name").regex(searchTerm,"i"),
-                Criteria.where("description").regex(searchTerm,"i")
+                Criteria.where("name").regex(searchTerm, "i"),
+                Criteria.where("category").regex(searchTerm, "i")
         );
         query.addCriteria(criteria);
         query.collation(Collation.of("vi").strength(Collation.ComparisonLevel.secondary()));
