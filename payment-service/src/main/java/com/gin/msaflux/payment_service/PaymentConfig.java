@@ -16,11 +16,10 @@ import java.util.*;
 
 public class PaymentConfig {
     private static final Random rnd = new Random();
-    public static String vnp_PayUrl = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-    public static String vnp_Returnurl = "/vnpay-payment";
-    public static String vnp_TmnCode = "XTNKANRH";
-    public static String vnp_HashSecret = "FNABMOP7AXKQFVWBIZE63HEIW7NAHO96";
-    public static String vnp_apiUrl = "https://sandbox.vnpayment.vn/merchant_webapi/api/transaction";
+    public static String vnpPayUrl = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
+    public static String vnpReturnurl = "http://localhost:8088/payment/returnUrl";
+    public static String vnpTmnCode = "XTNKANRH";
+    public static String vnpHashSecret = "FNABMOP7AXKQFVWBIZE63HEIW7NAHO96";
 
 
     public Mono<String> md5(String message) {
@@ -54,7 +53,7 @@ public class PaymentConfig {
     }
 
     //Util for VNPAY
-    public static Mono<String> hashAllFields(Map<String, Object> fields) {
+    public static Mono<String> hashAllFields(Map<String, String> fields) {
         return Mono.fromCallable(()->{
             List<String> fieldNames = new ArrayList<>(fields.keySet());
             Collections.sort(fieldNames);
@@ -62,7 +61,7 @@ public class PaymentConfig {
             Iterator<String> itr = fieldNames.iterator();
             while (itr.hasNext()) {
                 String fieldName = itr.next();
-                String fieldValue = (String) fields.get(fieldName);
+                String fieldValue = fields.get(fieldName);
                 if ((fieldValue != null) && (!fieldValue.isEmpty())) {
                     sb.append(fieldName);
                     sb.append("=");
@@ -72,7 +71,7 @@ public class PaymentConfig {
                     sb.append("&");
                 }
             }
-            return hmacSHA512(vnp_HashSecret,sb.toString());
+            return hmacSHA512(vnpHashSecret,sb.toString());
         });
     }
 

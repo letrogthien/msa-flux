@@ -11,6 +11,24 @@ import java.util.*;
 
 @Service
 public class PaymentService {
+    public Mono<Object> returnUrl(ServerHttpRequest request) {
+        Map<String, String> map;
+        map = request.getQueryParams().toSingleValueMap();
+        String vnpSecureHash = map.get("vnp_SecureHash");
+        map.remove("vnp_SecureHashType");
+        map.remove("vnp_SecureHash");
+        return PaymentConfig.hashAllFields(map).flatMap(
+                hash -> {
+                    if (!hash.equals(vnpSecureHash)) {
+                        return Mono.error(new RuntimeException("Hash doesn't match"));
+                    }
+                    if (!map.get("vnp_ResponseCode").equalsIgnoreCase("00")){
+                        return Mono.just("PAYMENT_ERROR");
+                    }
+                    return Mono.just("PAYMENT_SUCCESSFULLY");
+                }
+        );
+    }
 
     public Mono<String> createOrder(ServerHttpRequest serverRequest, int total, String orderInfo) {
         return PaymentConfig.getRandomNumber(8)
@@ -18,7 +36,7 @@ public class PaymentService {
                         Mono.fromCallable(() -> {
                             String vnpVersion = "2.1.0";
                             String vnpCommand = "pay";
-                            String vnpTmnCode = PaymentConfig.vnp_TmnCode;
+                            String vnpTmnCode = PaymentConfig.vnpTmnCode;
                             String orderType = "order-type";
                             String ip = PaymentConfig.getIpAddress(serverRequest);
 
@@ -36,7 +54,7 @@ public class PaymentService {
                             String locate = "vn";
                             vnpParams.put("vnp_Locale", locate);
 
-                            String urlReturn = PaymentConfig.vnp_Returnurl;
+                            String urlReturn = PaymentConfig.vnpReturnurl;
                             vnpParams.put("vnp_ReturnUrl", urlReturn);
                             vnpParams.put("vnp_IpAddr", ip);
 
@@ -68,9 +86,9 @@ public class PaymentService {
                             }
 
                             String queryUrl = query.toString();
-                            String vnpSecureHash = PaymentConfig.hmacSHA512(PaymentConfig.vnp_HashSecret, hashData.toString());
+                            String vnpSecureHash = PaymentConfig.hmacSHA512(PaymentConfig.vnpHashSecret, hashData.toString());
                             queryUrl += "&vnp_SecureHash=" + vnpSecureHash;
-                            return PaymentConfig.vnp_PayUrl + "?" + queryUrl;
+                            return PaymentConfig.vnpPayUrl + "?" + queryUrl;
                         })
                 );
     }
