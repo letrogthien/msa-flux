@@ -13,9 +13,9 @@ import com.gin.msaflux.auth_service.request.ChangPasswordRq;
 import com.gin.msaflux.auth_service.request.RegisterRq;
 import com.gin.msaflux.auth_service.response.AuthResponse;
 import com.gin.msaflux.auth_service.services.AuthService;
-import jakarta.ws.rs.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.kafka.common.errors.ResourceNotFoundException;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.ReactiveAuthenticationManager;
@@ -102,7 +102,7 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public Mono<String> forgetPassword(final String userName, final String email) {
         return userService.getByUserName(userName)
-                .switchIfEmpty(Mono.error(new NotFoundException("User not found")))
+                .switchIfEmpty(Mono.error(new Exception("User not found")))
                 .filter(user -> user.getEmail().equals(email))
                 .flatMap(
                         user -> {
@@ -177,7 +177,7 @@ public class AuthServiceImpl implements AuthService {
     public Mono<Object> updateUser(UserDto userDto) {
         return ReactiveSecurityContextHolder.getContext().flatMap(
                 securityContext -> userRepository.findById(securityContext.getAuthentication().getName())
-                        .switchIfEmpty(Mono.error(new NotFoundException("User not found")))
+                        .switchIfEmpty(Mono.error(new Exception("User not found")))
                         .flatMap(user -> {
                             User userNew = mapper.toUser(userDto);
                             return userRepository.save(userNew).map(mapper::toUserDto);
