@@ -14,22 +14,25 @@ import reactor.core.publisher.Mono;
 @Component
 public class KafkaListenerService{
     private final ProductRepository productRepository;
+    private final KafkaUtils kafkaUtils;
     @KafkaListener(
             topics = "add-product-response",
             concurrency = "3",
             groupId = "add-product-response"
     )
-    public Mono<Void> addProductResponse(AddProduct checkOwnerShop) {
-        return productRepository.findById(checkOwnerShop.getProductId())
-                .flatMap(product -> {
-                    if (!checkOwnerShop.isAccepted()){
-                        product.setApprovalStatus(ApprovalStatus.REJECTED);
-                        return productRepository.save(product).then();
-                    }
-                    product.setShopId(checkOwnerShop.getShopId());
-                    product.setApprovalStatus(ApprovalStatus.APPROVED);
-                    return productRepository.save(product).then();
-                });
+    public Mono<Void> addProductResponse(String checkOwnerShop) {
+        return kafkaUtils.jsonNodeToObject(checkOwnerShop, AddProduct.class)
+                .flatMap(addProduct ->
+                        productRepository.findById(addProduct.getProductId())
+                        .flatMap(product -> {
+                            if (!addProduct.isAccepted()){
+                                product.setApprovalStatus(ApprovalStatus.REJECTED);
+                                return productRepository.save(product).then();
+                            }
+                            product.setShopId(addProduct.getShopId());
+                            product.setApprovalStatus(ApprovalStatus.APPROVED);
+                            return productRepository.save(product).then();
+                        }));
     }
 }
 

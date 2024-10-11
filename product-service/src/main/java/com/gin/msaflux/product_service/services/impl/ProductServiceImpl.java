@@ -2,6 +2,7 @@ package com.gin.msaflux.product_service.services.impl;
 
 import com.gin.msaflux.product_service.common.ApprovalStatus;
 import com.gin.msaflux.product_service.dtos.ProductDto;
+import com.gin.msaflux.product_service.kafka.KafkaUtils;
 import com.gin.msaflux.product_service.kafka.payload.AddProduct;
 import com.gin.msaflux.product_service.models.Product;
 import com.gin.msaflux.product_service.repositories.CategoryRepository;
@@ -9,7 +10,6 @@ import com.gin.msaflux.product_service.repositories.ProductRepository;
 import com.gin.msaflux.product_service.services.ProductService;
 import jakarta.ws.rs.NotFoundException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.context.ReactiveSecurityContextHolder;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -26,7 +26,8 @@ import java.time.LocalDateTime;
 public class ProductServiceImpl implements ProductService {
     private final ProductRepository productRepository;
     private final CategoryRepository categoryRepository;
-    private final KafkaTemplate<String, Object> kafkaTemplate;
+
+    private final KafkaUtils kafkaUtils;
     /*
      * adds product to DB and published message to kafka
      * @param product
@@ -54,10 +55,10 @@ public class ProductServiceImpl implements ProductService {
                     return productRepository.save(product)
                             .flatMap(savedProduct -> {
                                 AddProduct checkOwnerShop = AddProduct.builder()
-                                        .userId(savedProduct.getId())
+                                        .userId(savedProduct.getSellerId())
                                         .productId(savedProduct.getId())
                                         .build();
-                                return Mono.fromRunnable(() -> kafkaTemplate.send("add-product", checkOwnerShop))
+                                return kafkaUtils.sendMessage("add-product", checkOwnerShop)
                                         .then(Mono.just(savedProduct));
                             });
                 }

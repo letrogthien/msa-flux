@@ -5,8 +5,9 @@ import com.gin.msaflux.auth_service.common.Mapper;
 import com.gin.msaflux.auth_service.common.RoleType;
 import com.gin.msaflux.auth_service.dtos.UserDto;
 import com.gin.msaflux.auth_service.jwt.JwtUtil;
+import com.gin.msaflux.auth_service.kafka.KafkaUtils;
+import com.gin.msaflux.auth_service.kafka.dto.ForgotPassNotify;
 import com.gin.msaflux.auth_service.request.AuthRequest;
-import com.gin.msaflux.common.kafka.payload.ForgotPassNotify;
 import com.gin.msaflux.auth_service.models.User;
 import com.gin.msaflux.auth_service.repository.UserRepository;
 import com.gin.msaflux.auth_service.request.ChangPasswordRq;
@@ -15,9 +16,6 @@ import com.gin.msaflux.auth_service.response.AuthResponse;
 import com.gin.msaflux.auth_service.services.AuthService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.kafka.common.errors.ResourceNotFoundException;
-import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.ReactiveAuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.ReactiveSecurityContextHolder;
@@ -41,7 +39,7 @@ public class AuthServiceImpl implements AuthService {
     private final UserServiceImpl userService;
     private final TokenServiceImpl tokenService;
     private final UserRepository userRepository;
-    private final KafkaTemplate<String, Object> kafkaTemplate;
+    private final KafkaUtils kafkaUtils;
     private static final Mapper mapper = Mapper.INSTANCE ;
 
     private static final String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -119,7 +117,7 @@ public class AuthServiceImpl implements AuthService {
                                                     .email(user.getEmail())
                                                     .newPassword(result.toString())
                                                     .build();
-                                            return Mono.fromRunnable(()->kafkaTemplate.send("forget-password-notify-topic",forgotPassNotify));
+                                            return kafkaUtils.sendMessage("forget-password-notify-topic",forgotPassNotify);
                                         }
                                         return Mono.empty();
                                     })

@@ -12,26 +12,25 @@ import reactor.core.publisher.Mono;
 @RequiredArgsConstructor
 public class KafkaListenerService {
     private final ShopRepository shopRepository ;
-    private final KafkaTemplate<String, Object> kafkaTemplate;
+    private final KafkaUtils kafkaUtils ;
     @KafkaListener(
             topics = "add-product",
             concurrency = "3",
             groupId = "add-product-gr1"
     )
-    public Mono<Void> listen(AddProduct checkOwnerShop) {
-        return shopRepository.findByOwnerId(checkOwnerShop.getUserId())
-                .switchIfEmpty(
-                        Mono.fromRunnable(() -> {
-                            checkOwnerShop.setAccepted(false);
-                            kafkaTemplate.send("add-product-response", checkOwnerShop);
-                        })
-                )
-                .flatMap(shop -> {
-                    checkOwnerShop.setShopId(shop.getId());
-                    return Mono.fromRunnable(() -> {
-                        checkOwnerShop.setAccepted(true);
-                        kafkaTemplate.send("add-product-response", checkOwnerShop);
-                    }).then();
-                });
+    public Mono<Void> listen(String checkOwnerShop) {
+       return kafkaUtils.jsonNodeToObject(checkOwnerShop, AddProduct.class)
+               .flatMap(addProduct ->
+                   shopRepository.findByOwnerId(addProduct.getUserId())
+                           .flatMap(shop -> {
+                               if (shop==null){
+                                   addProduct.setAccepted(false);
+                                   return kafkaUtils.sendMessage("add-product-response", addProduct);
+                               }
+                               addProduct.setAccepted(true);
+                               return kafkaUtils.sendMessage("add-product-response", addProduct);
+                           })
+               ).then();
     }
+
 }

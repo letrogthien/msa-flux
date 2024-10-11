@@ -17,6 +17,7 @@
         <module name="gateway-service" />
         <module name="review-service" />
         <module name="shop-service" />
+        <module name="order-service" />
         <module name="product_service" />
         <module name="notification-service" />
       </profile>
@@ -33,6 +34,7 @@
       <module name="gateway-service" options="-parameters" />
       <module name="inventory-service" options="-parameters" />
       <module name="notification-service" options="-parameters" />
+      <module name="order-service" options="-parameters" />
       <module name="payment-service" options="-parameters" />
       <module name="product_service" options="-parameters" />
       <module name="review-service" options="-parameters" />

@@ -1,5 +1,6 @@
 package com.gin.msaflux.shop_service.services.imp;
 
+import com.gin.msaflux.shop_service.models.Shop;
 import com.gin.msaflux.shop_service.repositories.ShopRepository;
 import com.gin.msaflux.shop_service.services.ShopService;
 import lombok.RequiredArgsConstructor;
@@ -14,5 +15,10 @@ public class ShopServiceImp implements ShopService {
     @Override
     public Mono<String> getShopIdByOwnerId(String s) {
         return shopRepository.findByOwnerId(s).flatMap(shop -> Mono.just(shop.getId()));
+    }
+
+    @Override
+    public Mono<Shop> addShop(Shop s) {
+        return null;
     }
 }

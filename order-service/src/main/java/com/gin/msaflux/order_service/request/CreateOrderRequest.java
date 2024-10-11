@@ -1,27 +1,21 @@
-package com.gin.msaflux.auth_service.models;
+package com.gin.msaflux.order_service.request;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import com.gin.msaflux.common.kafka.status.PaymentMethod;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.time.LocalDateTime;
+
 import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Document(collection = "orders")
-public class Order {
-    @Id
-    private String id;
+public class CreateOrderRequest {
     private String customerId;
     private List<OrderItem> items;
     private double totalAmount;
-    private String status;
+    private PaymentMethod paymentType;
     private Address shippingAddress;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
 
     @Data
     @AllArgsConstructor
@@ -36,12 +30,8 @@ public class Order {
     @AllArgsConstructor
     @NoArgsConstructor
     public static class Address {
-        private String addressLine1;
-        private String addressLine2;
-        private String city;
-        private String state;
-        private String postalCode;
+        private String addressLine;
+        private String city; // City
         private String country;
     }
 }
-

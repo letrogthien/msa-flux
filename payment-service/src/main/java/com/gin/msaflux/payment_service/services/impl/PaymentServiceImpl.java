@@ -1,5 +1,15 @@
-package com.gin.msaflux.payment_service;
+package com.gin.msaflux.payment_service.services.impl;
 
+import com.gin.msaflux.common.kafka.payload.OrderPayload;
+import com.gin.msaflux.common.kafka.payload.PaymentPayload;
+import com.gin.msaflux.common.kafka.status.PaymentMethod;
+import com.gin.msaflux.common.kafka.status.Status;
+import com.gin.msaflux.payment_service.PaymentConfig;
+import com.gin.msaflux.payment_service.kafka.KafkaUtils;
+import com.gin.msaflux.payment_service.models.Payment;
+import com.gin.msaflux.payment_service.repositories.PaymentRepository;
+import com.gin.msaflux.payment_service.services.PaymentService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
@@ -7,10 +17,41 @@ import reactor.core.publisher.Mono;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.*;
 
 @Service
-public class PaymentService {
+@RequiredArgsConstructor
+public class PaymentServiceImpl implements PaymentService {
+    private final KafkaUtils kafkaUtils;
+    private final PaymentRepository paymentRepository;
+
+
+    @Override
+    public Mono<Void> paymentMethod(PaymentPayload paymentPayload) {
+        PaymentMethod type = paymentPayload.getPaymentType();
+        Payment payment = Payment.builder()
+                .paymentMethod(type)
+                .transactionId(String.valueOf(Math.random())) // Ideally use a secure ID generator instead of Math.random
+                .amount(paymentPayload.getTotal())
+                .createdAt(LocalDateTime.now())
+                .status(Status.PENDING)
+                .build();
+
+        // Save the payment and send the Kafka message if the type is DIRECT
+        return paymentRepository.save(payment)
+                .flatMap(savedPayment -> {
+                    if (type.equals(PaymentMethod.DIRECT)) {
+                        OrderPayload orderPayload = OrderPayload.builder().orderId(paymentPayload.getOrderInfo()).build();
+                        return kafkaUtils.sendMessage("order-approved-notify", orderPayload);
+                    }
+                    return Mono.empty(); // Do nothing for other payment types
+                }).then();
+    }
+
+
+
+    @Override
     public Mono<Object> returnUrl(ServerHttpRequest request) {
         Map<String, String> map;
         map = request.getQueryParams().toSingleValueMap();
@@ -19,18 +60,22 @@ public class PaymentService {
         map.remove("vnp_SecureHash");
         return PaymentConfig.hashAllFields(map).flatMap(
                 hash -> {
-                    if (!hash.equals(vnpSecureHash)) {
-                        return Mono.error(new RuntimeException("Hash doesn't match"));
+                    String order = map.get("vnp_OrderInfo");
+
+                    if (!hash.equals(vnpSecureHash) || !map.get("vnp_ResponseCode").equalsIgnoreCase("00")) {
+                        OrderPayload rejectOrderPayload = OrderPayload.builder().orderId(order).build();
+                        return kafkaUtils.sendMessage("order-reject", rejectOrderPayload)
+                                .then(Mono.error(new RuntimeException("PAYMENT_ERROR")));
                     }
-                    if (!map.get("vnp_ResponseCode").equalsIgnoreCase("00")){
-                        return Mono.just("PAYMENT_ERROR");
-                    }
-                    return Mono.just("PAYMENT_SUCCESSFULLY");
+                    OrderPayload orderPayload = OrderPayload.builder().orderId(order).build();
+                    return kafkaUtils.sendMessage("order-approved-notify", orderPayload)
+                            .then(Mono.error(new RuntimeException("SUCCESS")));
                 }
         );
     }
 
-    public Mono<String> createOrder(ServerHttpRequest serverRequest, int total, String orderInfo) {
+    @Override
+    public Mono<String> createOrder(ServerHttpRequest serverRequest, double total, String orderInfo) {
         return PaymentConfig.getRandomNumber(8)
                 .flatMap(vnpTxnRef ->
                         Mono.fromCallable(() -> {
@@ -91,6 +136,11 @@ public class PaymentService {
                             return PaymentConfig.VNP_PAY_URL + "?" + queryUrl;
                         })
                 );
+    }
+
+    @Override
+    public Mono<Payment> getByOrderId(String id) {
+        return paymentRepository.findByOrderId(id);
     }
 
 }
