@@ -1,5 +1,6 @@
 package com.gin.msaflux.product_service.controllers;
 
+import com.gin.msaflux.product_service.request.AddProductRq;
 import com.gin.msaflux.product_service.dtos.ProductDto;
 import com.gin.msaflux.product_service.models.Product;
 import com.gin.msaflux.product_service.services.ProductService;
@@ -38,7 +39,7 @@ public class ProductController {
     @PostMapping("/add")
     @ResponseStatus(HttpStatus.OK)
     public Mono<Product> addProduct(
-            @RequestBody ProductDto product
+            @RequestBody AddProductRq product
     ) {
         return productService.addProduct(product);
     }

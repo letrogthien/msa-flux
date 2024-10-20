@@ -9,10 +9,12 @@ import com.gin.msaflux.auth_service.response.AuthResponse;
 import com.gin.msaflux.auth_service.services.impl.AuthServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
+
+import java.net.URI;
 
 @RestController
 @RequiredArgsConstructor
@@ -26,6 +28,15 @@ public class AuthController {
     public Mono<AuthResponse> login (@RequestBody final AuthRequest authRequest) {
         return authService.authenticate(authRequest);
     }
+
+
+    @GetMapping("/google/login")
+    public Mono<Void> loginWithGoogle(ServerWebExchange exchange) {
+        exchange.getResponse().setStatusCode(HttpStatus.FOUND);
+        exchange.getResponse().getHeaders().setLocation(URI.create("/oauth2/authorization/google"));
+        return exchange.getResponse().setComplete();
+    }
+
 
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("register")
@@ -64,5 +75,7 @@ public class AuthController {
     public Mono<Object> updateUserProfile(@RequestBody final UserDto userDto) {
         return authService.updateUser(userDto);
     }
+
+
 
 }

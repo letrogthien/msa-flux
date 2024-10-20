@@ -1,10 +1,9 @@
 package com.gin.msaflux.shop_service.kafka;
 
-import com.gin.msaflux.shop_service.kafka.payload.AddProduct;
+import com.gin.msaflux.common.kafka.payload.AddProduct;
 import com.gin.msaflux.shop_service.repositories.ShopRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
@@ -28,6 +27,7 @@ public class KafkaListenerService {
                                    return kafkaUtils.sendMessage("add-product-response", addProduct);
                                }
                                addProduct.setAccepted(true);
+                               addProduct.setShopId(shop.getId());
                                return kafkaUtils.sendMessage("add-product-response", addProduct);
                            })
                ).then();

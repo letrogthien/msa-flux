@@ -4,32 +4,38 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="32440c6d-bb92-45c2-a729-021153cbf1d9" name="Changes" comment="add respone for banking">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="32440c6d-bb92-45c2-a729-021153cbf1d9" name="Changes" comment="order flow, saga pattern, kafka">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/kafka/KafkaConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/kafka/KafkaConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/models/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/src/main/java/com/gin/msaflux/order_service/models/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/models/Payment.java" beforeDir="false" afterPath="$PROJECT_DIR$/payment-service/src/main/java/com/gin/msaflux/payment_service/models/Payment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/config/Security.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/config/Security.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/controllers/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/controllers/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/controllers/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/controllers/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/exception/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/jwt/JwtFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/jwt/JwtFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/jwt/JwtUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/jwt/JwtUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/request/RegisterRq.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/request/RegisterRq.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/services/impl/AuthServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/services/impl/AuthServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inventory-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/inventory-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/services/impl/CustomUserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/services/impl/CustomUserDetailsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/services/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/gin/msaflux/auth_service/services/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/gin/msaflux/common/kafka/payload/AddProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/gin/msaflux/common/kafka/payload/AddProduct.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inventory-service/src/main/java/com/gin/msaflux/inventory_service/kafka/KafkaListenerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/inventory-service/src/main/java/com/gin/msaflux/inventory_service/kafka/KafkaListenerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inventory-service/src/main/java/com/gin/msaflux/inventory_service/models/Inventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/inventory-service/src/main/java/com/gin/msaflux/inventory_service/models/Inventory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/inventory-service/src/main/java/com/gin/msaflux/inventory_service/services/InventoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/inventory-service/src/main/java/com/gin/msaflux/inventory_service/services/InventoryService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/inventory-service/src/main/java/com/gin/msaflux/inventory_service/services/impl/InventoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/inventory-service/src/main/java/com/gin/msaflux/inventory_service/services/impl/InventoryServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notification-service/src/main/java/com/gin/msaflux/notification_service/kafka/KafkaConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/notification-service/src/main/java/com/gin/msaflux/notification_service/kafka/KafkaConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notification-service/src/main/java/com/gin/msaflux/notification_service/kafka/KafkaListenerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/notification-service/src/main/java/com/gin/msaflux/notification_service/kafka/KafkaListenerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/payment-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/payment-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/payment-service/src/main/java/com/gin/msaflux/payment_service/PaymentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/payment-service/src/main/java/com/gin/msaflux/payment_service/controllers/PaymentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/payment-service/src/main/java/com/gin/msaflux/payment_service/PaymentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/payment-service/src/main/java/com/gin/msaflux/payment_service/services/impl/PaymentServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/payment-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/payment-service/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/kafka/KafkaConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/kafka/KafkaConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/controllers/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/controllers/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/dtos/ProductDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/request/AddProductRq.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/kafka/KafkaListenerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/kafka/KafkaListenerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/kafka/payload/AddProduct.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/models/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/models/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/services/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/services/ProductService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/services/impl/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/gin/msaflux/product_service/services/impl/ProductServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop-service/src/main/java/com/gin/msaflux/shop_service/kafka/KafkaConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop-service/src/main/java/com/gin/msaflux/shop_service/kafka/KafkaConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/shop-service/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shop-service/src/main/java/com/gin/msaflux/shop_service/kafka/KafkaListenerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop-service/src/main/java/com/gin/msaflux/shop_service/kafka/KafkaListenerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop-service/src/main/java/com/gin/msaflux/shop_service/services/imp/ShopServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop-service/src/main/java/com/gin/msaflux/shop_service/services/imp/ShopServiceImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop-service/src/main/java/com/gin/msaflux/shop_service/kafka/payload/AddProduct.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/shop-service/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,39 +82,43 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor&quot;: &quot;Run&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
-    &quot;Spring Boot.AuthServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.EurekaServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.GatewayServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.InventoryServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.NotificationServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.OrderServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.PaymentServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.ProductServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;21 (2)&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/webflux_msa/common/src/main/java/com/gin/msaflux/common/kafka/payload&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
+    "Spring Boot.AuthServiceApplication.executor": "Debug",
+    "Spring Boot.EurekaServiceApplication.executor": "Run",
+    "Spring Boot.GatewayServiceApplication.executor": "Run",
+    "Spring Boot.InventoryServiceApplication.executor": "Run",
+    "Spring Boot.NotificationServiceApplication.executor": "Run",
+    "Spring Boot.OrderServiceApplication.executor": "Run",
+    "Spring Boot.PaymentServiceApplication.executor": "Run",
+    "Spring Boot.ProductServiceApplication.executor": "Run",
+    "Spring Boot.ShopServiceApplication.executor": "Run",
+    "git-widget-placeholder": "main",
+    "jdk.selected.JAVA_MODULE": "21 (2)",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/webflux_msa/common/src/main/java/com/gin/msaflux/common/kafka/payload",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "run.configurations.included.in.services": "true",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.gin.msaflux.review_service.request" />
@@ -139,7 +149,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.ProductServiceApplication">
+  <component name="RunManager" selected="Spring Boot.AuthServiceApplication">
     <configuration name="AuthServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="auth-service" />
@@ -335,7 +345,29 @@
       <workItem from="1728404116619" duration="1790000" />
       <workItem from="1728490541080" duration="2432000" />
       <workItem from="1728573923026" duration="5669000" />
-      <workItem from="1728635382801" duration="1339000" />
+      <workItem from="1728635382801" duration="8639000" />
+      <workItem from="1728654729734" duration="7885000" />
+      <workItem from="1728710649815" duration="1380000" />
+      <workItem from="1728719648330" duration="10277000" />
+      <workItem from="1728741193463" duration="11155000" />
+      <workItem from="1728872383783" duration="2156000" />
+      <workItem from="1728880684436" duration="1732000" />
+      <workItem from="1728900029289" duration="3590000" />
+      <workItem from="1728906374881" duration="11468000" />
+      <workItem from="1728975452689" duration="4358000" />
+      <workItem from="1728980214011" duration="5133000" />
+      <workItem from="1728997063453" duration="470000" />
+      <workItem from="1729069971240" duration="6016000" />
+      <workItem from="1729085102126" duration="1645000" />
+      <workItem from="1729131645142" duration="4073000" />
+      <workItem from="1729152912814" duration="7304000" />
+      <workItem from="1729256416254" duration="5878000" />
+      <workItem from="1729266172073" duration="1081000" />
+      <workItem from="1729308815055" duration="4006000" />
+      <workItem from="1729323759320" duration="5482000" />
+      <workItem from="1729332060437" duration="717000" />
+      <workItem from="1729355486024" duration="2564000" />
+      <workItem from="1729414925317" duration="5902000" />
     </task>
     <task id="LOCAL-00002" summary="commit 23/9/2024">
       <option name="closed" value="true" />
@@ -385,7 +417,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727873030660</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="order flow, saga pattern, kafka">
+      <option name="closed" value="true" />
+      <created>1728637239215</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1728637239215</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -408,6 +448,17 @@
     <option featureType="dependencySupport" implementationName="java:org.springframework:spring-messaging" />
     <option featureType="dependencySupport" implementationName="java:org.springframework.boot:spring-boot" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="commit 12/9/2024" />
     <MESSAGE value="commit 23/9/2024" />
@@ -415,6 +466,7 @@
     <MESSAGE value="add search product with pageable, filter product and pageable" />
     <MESSAGE value="add payment feature with VNPAY" />
     <MESSAGE value="add respone for banking" />
-    <option name="LAST_COMMIT_MESSAGE" value="add respone for banking" />
+    <MESSAGE value="order flow, saga pattern, kafka" />
+    <option name="LAST_COMMIT_MESSAGE" value="order flow, saga pattern, kafka" />
   </component>
 </project>

@@ -2,8 +2,8 @@ package com.gin.msaflux.product_service.kafka;
 
 
 
+import com.gin.msaflux.common.kafka.payload.AddProduct;
 import com.gin.msaflux.product_service.common.ApprovalStatus;
-import com.gin.msaflux.product_service.kafka.payload.AddProduct;
 import com.gin.msaflux.product_service.repositories.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.kafka.annotation.KafkaListener;

@@ -1,12 +1,13 @@
 package com.gin.msaflux.product_service.services.impl;
 
+import com.gin.msaflux.common.kafka.payload.AddProduct;
 import com.gin.msaflux.product_service.common.ApprovalStatus;
 import com.gin.msaflux.product_service.dtos.ProductDto;
 import com.gin.msaflux.product_service.kafka.KafkaUtils;
-import com.gin.msaflux.product_service.kafka.payload.AddProduct;
 import com.gin.msaflux.product_service.models.Product;
 import com.gin.msaflux.product_service.repositories.CategoryRepository;
 import com.gin.msaflux.product_service.repositories.ProductRepository;
+import com.gin.msaflux.product_service.request.AddProductRq;
 import com.gin.msaflux.product_service.services.ProductService;
 import jakarta.ws.rs.NotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -32,38 +33,55 @@ public class ProductServiceImpl implements ProductService {
      * adds product to DB and published message to kafka
      * @param product
      * @return Mono<product>
-     */
-    @Override
-    public Mono<Product> addProduct(ProductDto productDto) {
-        return ReactiveSecurityContextHolder.getContext().flatMap(
-                securityContext ->
-                {
-                    Product product= Product.builder()
-                            .createdAt(LocalDateTime.now())
-                            .updatedAt(LocalDateTime.now())
-                            .id(null)
-                            .sellerId(securityContext.getAuthentication().getName())
-                            .name(productDto.getName())
-                            .price(productDto.getPrice())
-                            .stock(productDto.getStock())
-                            .tags(productDto.getTags())
-                            .shopId(null)
-                            .approvalStatus(ApprovalStatus.PENDING)
-                            .description(productDto.getDescription())
-                            .categoryId(productDto.getCategoryId())
-                            .build();
-                    return productRepository.save(product)
-                            .flatMap(savedProduct -> {
-                                AddProduct checkOwnerShop = AddProduct.builder()
-                                        .userId(savedProduct.getSellerId())
-                                        .productId(savedProduct.getId())
-                                        .build();
-                                return kafkaUtils.sendMessage("add-product", checkOwnerShop)
-                                        .then(Mono.just(savedProduct));
-                            });
-                }
-        );
+     */@Override
+    public Mono<Product> addProduct(AddProductRq productDto) {
+        // Get the current user from the security context
+        return ReactiveSecurityContextHolder.getContext()
+                .map(securityContext -> securityContext.getAuthentication().getName())
+                .flatMap(sellerId -> validateAndCreateProduct(sellerId, productDto)) // Extracted product creation logic
+                .flatMap(product -> saveProduct(product, productDto)); // Handling saving and Kafka message
     }
+
+    // Method to validate the category and build the product
+    private Mono<Product> validateAndCreateProduct(String sellerId, AddProductRq productDto) {
+        return categoryRepository.findById(productDto.getCategoryId())
+                .switchIfEmpty(Mono.error(new RuntimeException("Category not found")))
+                .map(category -> Product.builder()
+                        .createdAt(LocalDateTime.now())
+                        .updatedAt(LocalDateTime.now())
+                        .id(null)  // Let the DB assign an ID
+                        .sellerId(sellerId)
+                        .name(productDto.getName())
+                        .price(productDto.getPrice())
+                        .tags(productDto.getTags())
+                        .shopId(null)  // May want to set this when available
+                        .approvalStatus(ApprovalStatus.PENDING)
+                        .description(productDto.getDescription())
+                        .categoryId(productDto.getCategoryId())
+                        .build()
+                );
+    }
+
+    // Method to save the product and send Kafka message
+    private Mono<Product> saveProduct(Product product, AddProductRq productDto) {
+        return productRepository.save(product)
+                .flatMap(savedProduct -> sendAddProductEvent(savedProduct, productDto.getStock().getQuantity()));
+    }
+
+    // Method to send Kafka message and return the saved product
+    private Mono<Product> sendAddProductEvent(Product savedProduct, int quantity) {
+        AddProduct addProduct = AddProduct.builder()
+                .userId(savedProduct.getSellerId())
+                .productId(savedProduct.getId())
+                .quantity(quantity)
+                .sendingTime(LocalDateTime.now())
+                .build();
+
+        // Send Kafka message and return the saved product
+        return kafkaUtils.sendMessage("add-product", addProduct)
+                .then(Mono.just(savedProduct));
+    }
+
 
     @Override
     public Mono<Product> updateProduct(ProductDto product) {
@@ -136,10 +154,6 @@ public class ProductServiceImpl implements ProductService {
         }
         if (productChange.getPrice() != null) {
             root.setPrice(productChange.getPrice());
-        }
-
-        if (productChange.getStock() != null) {
-            root.setStock(productChange.getStock());
         }
         if (productChange.getTags() != null) {
             root.setTags(productChange.getTags());

@@ -5,7 +5,6 @@ import com.gin.msaflux.auth_service.models.User;
 import com.gin.msaflux.auth_service.services.impl.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
@@ -18,6 +17,7 @@ public class Test {
     private final UserServiceImpl userService;
     @GetMapping("/all")
     public Flux<User> getAll() {
+
         return userService.getAll();
     }
 

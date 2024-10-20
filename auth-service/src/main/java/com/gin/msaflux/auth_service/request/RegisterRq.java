@@ -1,9 +1,6 @@
 package com.gin.msaflux.auth_service.request;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 
 @Builder
@@ -11,7 +8,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RegisterRq {
+    @NonNull
     private String username;
+    @NonNull
     private String password;
+    @NonNull
     private String email;
 }

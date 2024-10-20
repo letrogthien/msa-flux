@@ -11,7 +11,6 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
@@ -27,7 +26,7 @@ public class CustomUserDetailsService implements ReactiveUserDetailsService {
     @Override
     public Mono<UserDetails> findByUsername(String username) {
         return userService.getByUserName(username)
-                .switchIfEmpty(Mono.error(new UsernameNotFoundException("User not found")))
+                .switchIfEmpty(Mono.error(new UsernameNotFoundException("User not found with username")))
                 .flatMap(user -> {
                     List<SimpleGrantedAuthority> authorities =user.getRoles().stream().map(
                             SimpleGrantedAuthority::new
@@ -40,9 +39,24 @@ public class CustomUserDetailsService implements ReactiveUserDetailsService {
                 });
     }
 
+    public Mono<UserDetails> findByEmail(String email) {
+        return userService.getByEmail(email)
+                .switchIfEmpty(Mono.error(new UsernameNotFoundException("User not found with email")))
+                .flatMap(user -> {
+                    List<SimpleGrantedAuthority> authorities =user.getRoles().stream().map(
+                            SimpleGrantedAuthority::new
+                    ).toList();
+                    return Mono.just(User.builder()
+                            .authorities(authorities)
+                            .username(user.getId())
+                            .password(user.getPassword())
+                            .build());
+                });
+    }
+
     public Mono<UserDetails> findByUserId(String id) {
         return userRepository.findById(id)
-                .switchIfEmpty(Mono.error(new UsernameNotFoundException("User not found")))
+                .switchIfEmpty(Mono.error(new UsernameNotFoundException("User not found with id")))
                 .flatMap(user -> {
                     List<SimpleGrantedAuthority> authorities =user.getRoles().stream().map(
                             SimpleGrantedAuthority::new

@@ -5,10 +5,10 @@ import com.gin.msaflux.common.kafka.payload.OrderPayload;
 import com.gin.msaflux.common.kafka.payload.PaymentPayload;
 import com.gin.msaflux.inventory_service.kafka.KafkaUtils;
 
+import com.gin.msaflux.inventory_service.models.Inventory;
 import com.gin.msaflux.inventory_service.repositories.InventoryRepository;
 import com.gin.msaflux.inventory_service.services.InventoryService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.boot.autoconfigure.web.client.RestTemplateAutoConfiguration;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -21,10 +21,9 @@ public class InventoryServiceImpl implements InventoryService {
 
     private final InventoryRepository inventoryRepository;
     private final KafkaUtils kafkaUtils;
-    private final RestTemplateAutoConfiguration restTemplateAutoConfiguration;
 
     @Override
-    public Mono<Boolean> decTotalInventory(Long quantity, String productId) {
+    public Mono<Boolean> decTotalInventory(int quantity, String productId) {
         return inventoryRepository.findByProductId(productId).flatMap(
                 inventory -> {
                     if (inventory.getTotalCount()<quantity) {
@@ -37,7 +36,7 @@ public class InventoryServiceImpl implements InventoryService {
     }
 
     @Override
-    public Mono<Boolean> incTotalInventory(Long quantity, String productId) {
+    public Mono<Boolean> incTotalInventory(int quantity, String productId) {
         return inventoryRepository.findByProductId(productId).flatMap(
                 inventory -> {
                     inventory.setTotalCount(inventory.getTotalCount()+quantity);
@@ -47,7 +46,7 @@ public class InventoryServiceImpl implements InventoryService {
     }
 
     @Override
-    public Mono<Boolean> decInventoryAvailable(Long quantity, String productId) {
+    public Mono<Boolean> decInventoryAvailable(int quantity, String productId) {
         return inventoryRepository.findByProductId(productId).flatMap(
                 inventory -> {
                     if (inventory.getAvailableCount()<quantity) {
@@ -60,7 +59,7 @@ public class InventoryServiceImpl implements InventoryService {
     }
 
     @Override
-    public Mono<Boolean> incInventoryAvailable(Long quantity, String productId) {
+    public Mono<Boolean> incInventoryAvailable(int quantity, String productId) {
         return inventoryRepository.findByProductId(productId).flatMap(
                 inventory -> {
                     inventory.setAvailableCount(inventory.getAvailableCount()+quantity);
@@ -96,6 +95,11 @@ public class InventoryServiceImpl implements InventoryService {
                 }
         );
 
+    }
+
+    @Override
+    public Mono<Inventory> saveInventory(Inventory inventory) {
+        return inventoryRepository.save(inventory);
     }
 
     /*

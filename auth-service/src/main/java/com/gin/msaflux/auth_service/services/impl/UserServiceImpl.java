@@ -21,4 +21,5 @@ public class UserServiceImpl {
         return userRepository.findById(id);
     }
     public Mono<User> save(final User user){return userRepository.save(user);}
+    public Mono<User> getByEmail(final String email){return userRepository.findByEmail(email);}
 }

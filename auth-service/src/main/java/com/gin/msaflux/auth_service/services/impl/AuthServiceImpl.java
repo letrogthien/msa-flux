@@ -21,6 +21,8 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.context.ReactiveSecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.jwt.Jwt;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
@@ -128,9 +130,9 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public Mono<String> changePassword(final ChangPasswordRq changPasswordRq) {
-        return ReactiveSecurityContextHolder.getContext().flatMap(
-                securityContext ->
-                        customUserDetailsService.findByUserId(securityContext.getAuthentication().getName())
+        return getCurrentUserId().flatMap(
+                userId ->
+                        customUserDetailsService.findByUserId(userId)
                                 .filter(user -> user.getPassword().equals(passwordEncoder.encode(changPasswordRq.getOldPassword())))
                                 .filter(user -> passwordEncoder.matches(changPasswordRq.getOldPassword(), user.getPassword()))
                                 .flatMap(
@@ -147,34 +149,31 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public Mono<Object> register(RegisterRq registerRq) {
-        if (registerRq.getPassword() == null || registerRq.getPassword().isEmpty()) {
-            return Mono.error(new RuntimeException("Password cannot be null or empty"));
-        }
-        if (registerRq.getEmail() == null || registerRq.getEmail().isEmpty()) {
-            return Mono.error(new RuntimeException("Email cannot be null or empty"));
-        }
-        if (registerRq.getUsername() == null || registerRq.getUsername().isEmpty()) {
-            return Mono.error(new RuntimeException("Username cannot be null or empty"));
-        }
         return userService.getByUserName(registerRq.getUsername())
-                .flatMap(user -> Mono.error(new RuntimeException("User Exists")))
+                .flatMap(user -> Mono.error(new RuntimeException("Username already exists")))
                 .switchIfEmpty(
-                        userService.save(
-                                        User.builder()
-                                                .roles(List.of(String.valueOf(RoleType.CUSTOMER)))
-                                                .createdAt(LocalDateTime.now())
-                                                .username(registerRq.getUsername())
-                                                .password(passwordEncoder.encode(registerRq.getPassword()))
-                                                .email(registerRq.getEmail())
-                                                .build()
-                        )
-                ).thenReturn("register success");
+                        userService.getByEmail(registerRq.getEmail())
+                                .flatMap(user -> Mono.error(new RuntimeException("Email already exists")))
+                                .switchIfEmpty(
+                                        userService.save(
+                                                User.builder()
+                                                        .roles(List.of(String.valueOf(RoleType.CUSTOMER)))
+                                                        .createdAt(LocalDateTime.now())
+                                                        .username(registerRq.getUsername())
+                                                        .password(passwordEncoder.encode(registerRq.getPassword()))
+                                                        .email(registerRq.getEmail())
+                                                        .build()
+                                        )
+                                )
+                )
+                .thenReturn("Register success");
     }
+
 
     @Override
     public Mono<Object> updateUser(UserDto userDto) {
-        return ReactiveSecurityContextHolder.getContext().flatMap(
-                securityContext -> userRepository.findById(securityContext.getAuthentication().getName())
+        return getCurrentUserId().flatMap(
+                securityContext -> userRepository.findById(securityContext)
                         .switchIfEmpty(Mono.error(new Exception("User not found")))
                         .flatMap(user -> {
                             User userNew = mapper.toUser(userDto);
@@ -187,6 +186,16 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public Mono<UserDto> getUserById(String userId) {
         return userRepository.findById(userId).map(mapper::toUserDto);
+    }
+
+
+    private Mono<String> getCurrentUserId() {
+        return ReactiveSecurityContextHolder.getContext()
+                .map(securityContext -> {
+                    JwtAuthenticationToken jwtAuthToken = (JwtAuthenticationToken) securityContext.getAuthentication();
+                    Jwt jwt = jwtAuthToken.getToken();
+                    return jwt.getClaim("id");
+                });
     }
 
 }
