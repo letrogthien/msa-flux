@@ -24,6 +24,7 @@ import java.util.List;
 public class Security {
     private final CustomJwtDecoder jwtDecoder;
     private final CustomUserDetailsService customUserDetailsService;
+    private final CustomOnFailureHandler customOnFailureHandler;
 
 
     @Bean
@@ -35,9 +36,12 @@ public class Security {
     public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
         http.csrf(ServerHttpSecurity.CsrfSpec::disable);
         http.oauth2ResourceServer(
-                exchange -> exchange.jwt(
-                    jwtSpec -> jwtSpec.jwtDecoder(jwtDecoder).jwtAuthenticationConverter(jwtAuthenticationConverter())
-                )
+                exchange -> {
+                    exchange.jwt(
+                            jwtSpec -> jwtSpec.jwtDecoder(jwtDecoder).jwtAuthenticationConverter(jwtAuthenticationConverter())
+                    );
+                    exchange.authenticationFailureHandler(customOnFailureHandler);
+                }
         );
         http.authorizeExchange(exchange ->
             exchange
