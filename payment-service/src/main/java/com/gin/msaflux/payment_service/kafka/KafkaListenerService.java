@@ -22,7 +22,6 @@ public class KafkaListenerService {
             groupId = "payment-check-gr-1"
     )
     public Mono<Void> paymentCheck(String paymentPayload){
-        System.out.println(paymentPayload);
          return kafkaUtils.jsonNodeToObject(paymentPayload, PaymentPayload.class)
                  .flatMap(paymentService::paymentMethod).then();
     }

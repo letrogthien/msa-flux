@@ -42,6 +42,14 @@ public class ProductServiceImpl implements ProductService {
                 .flatMap(product -> saveProduct(product, productDto)); // Handling saving and Kafka message
     }
 
+    @Override
+    public Mono<Double> caculateAmount(Flux<String> productIds) {
+        return productIds
+                .flatMap(productRepository::findById)
+                .map(Product::getPrice)
+                .reduce(Double::sum);
+    }
+
     // Method to validate the category and build the product
     private Mono<Product> validateAndCreateProduct(String sellerId, AddProductRq productDto) {
         return categoryRepository.findById(productDto.getCategoryId())
@@ -152,9 +160,9 @@ public class ProductServiceImpl implements ProductService {
         if (productChange.getCategoryId() != null) {
             root.setCategoryId(productChange.getCategoryId());
         }
-        if (productChange.getPrice() != null) {
-            root.setPrice(productChange.getPrice());
-        }
+
+        root.setPrice(productChange.getPrice());
+
         if (productChange.getTags() != null) {
             root.setTags(productChange.getTags());
         }

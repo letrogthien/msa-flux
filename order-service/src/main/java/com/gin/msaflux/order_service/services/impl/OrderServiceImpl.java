@@ -35,15 +35,12 @@ public class OrderServiceImpl implements OrderService {
                             createOrderRequest.getShippingAddress().getCity(),
                             createOrderRequest.getShippingAddress().getCountry());
 
-                    double totalAmount= orderItems.stream().mapToDouble(orderItem -> orderItem.getQuantity() * orderItem.getPrice()).sum();
-
                     Order order = Order.builder()
                             .createdAt(LocalDateTime.now())
                             .customerId(userId)
                             .items(orderItems)
                             .paymentType(createOrderRequest.getPaymentType())
                             .status(Status.PENDING)
-                            .totalAmount(totalAmount)
                             .shippingAddress(address)
                             .updatedAt(LocalDateTime.now()).build();
                     return orderRepository.save(order)
@@ -51,8 +48,7 @@ public class OrderServiceImpl implements OrderService {
                             .flatMap(savedOrder -> kafkaUtils.sendMessage("inventory-check", OrderPayload.builder().orderId(savedOrder.getId())
                                     .orderItems(
                                             savedOrder.getItems().stream().map(i -> new OrderPayload.OrderItemPayload(i.getProductId(), i.getQuantity(), i.getPrice())).toList()
-                                    ).totalPrice(totalAmount)
-                                    .paymentType(savedOrder.getPaymentType()).build())
+                                    ).paymentType(savedOrder.getPaymentType()).build())
                                     .thenReturn(savedOrder));
                 });
     }
@@ -75,6 +71,17 @@ public class OrderServiceImpl implements OrderService {
                     order.setStatus(Status.ACCEPTED);
                     order.setUpdatedAt(LocalDateTime.now());
                     return orderRepository.save(order);
+                }
+        );
+    }
+
+    @Override
+    public Mono<Order> updateTotalAmount(OrderPayload orderPayload) {
+        return orderRepository.findById(orderPayload.getOrderId()).flatMap(
+                order -> {
+                    order.setUpdatedAt(LocalDateTime.now());
+                    order.setTotalAmount(orderPayload.getTotalPrice());
+                    return orderRepository.save(order).then(kafkaUtils.sendMessage("payment-check", orderPayload)).then(Mono.just(order));
                 }
         );
     }

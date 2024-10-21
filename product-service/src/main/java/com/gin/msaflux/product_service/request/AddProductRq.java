@@ -5,8 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -20,7 +18,7 @@ public class AddProductRq {
     private String name;
     private String description;
     private String categoryId;
-    private BigDecimal price;
+    private double price;
     private Stock stock;
     private String sellerId;
     private List<String> tags;

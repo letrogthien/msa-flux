@@ -11,6 +11,7 @@ import java.math.BigDecimal;
 
 public interface ProductService {
     Mono<Product> addProduct(AddProductRq product) ;
+    Mono<Double> caculateAmount(Flux<String> productId);
     Mono<Product> updateProduct(ProductDto product) ;
     Mono<Void> deleteProduct(String productId) ;
     Mono<Product> getProduct(String productId) ;

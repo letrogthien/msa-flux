@@ -68,6 +68,14 @@ public class KafkaConfig {
                 .build();
     }
 
+    @Bean
+    public NewTopic checkInventorySuccessTopic() {
+        return TopicBuilder.name("payment-check")
+                .replicas(2)
+                .partitions(3)
+                .build();
+    }
+
 
 
 

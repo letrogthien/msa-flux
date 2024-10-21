@@ -34,12 +34,27 @@ public class KafkaListenerService {
             concurrency = "3",
             groupId = "order-approved-notify-topic-gr1"
     )
+
     Mono<Void> approveOrder(String orderId){
 
         return kafkaUtils.jsonNodeToObject(orderId, OrderPayload.class)
                 .flatMap(obj-> orderService.approveOrder(obj.getOrderId())
                 ).then();
     }
+
+    @KafkaListener(
+            topics = "inventory-check-success",
+            concurrency = "3",
+            groupId = "inventory-check-success-topic-gr1"
+    )
+
+    Mono<Void> checkInventorySuccess(String checkInventory){
+        return kafkaUtils.jsonNodeToObject(checkInventory, OrderPayload.class)
+                .flatMap(orderService::updateTotalAmount).then();
+
+    }
+
+
 
 
 

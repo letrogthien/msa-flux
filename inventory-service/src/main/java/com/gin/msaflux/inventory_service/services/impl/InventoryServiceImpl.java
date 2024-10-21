@@ -2,7 +2,6 @@ package com.gin.msaflux.inventory_service.services.impl;
 
 import com.gin.msaflux.common.kafka.payload.CheckInventory;
 import com.gin.msaflux.common.kafka.payload.OrderPayload;
-import com.gin.msaflux.common.kafka.payload.PaymentPayload;
 import com.gin.msaflux.inventory_service.kafka.KafkaUtils;
 
 import com.gin.msaflux.inventory_service.models.Inventory;
@@ -84,12 +83,7 @@ public class InventoryServiceImpl implements InventoryService {
                                 .then(Mono.empty());
                     }
 
-                    PaymentPayload payload = PaymentPayload.builder()
-                            .total(orderPayload.getTotalPrice())
-                            .orderInfo(orderPayload.getOrderId())
-                            .paymentType(orderPayload.getPaymentType()).build();
-                    return kafkaUtils.sendMessage("payment-check", payload)
-                            .then(Mono.just(Mono.just(list.collectList())));
+                    return kafkaUtils.sendMessage("inventory-check-success", orderPayload);
 
 
                 }

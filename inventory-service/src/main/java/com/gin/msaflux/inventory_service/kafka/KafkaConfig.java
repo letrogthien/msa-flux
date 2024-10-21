@@ -57,13 +57,7 @@ public class KafkaConfig {
         return factory;
     }
 
-    @Bean
-    public NewTopic checkInventorySuccessTopic() {
-        return TopicBuilder.name("payment-check")
-                .replicas(2)
-                .partitions(3)
-                .build();
-    }
+
     @Bean
     public NewTopic checkInventoryFailureTopic() {
         return TopicBuilder.name("inventory-check-failed")
@@ -71,6 +65,15 @@ public class KafkaConfig {
                 .partitions(3)
                 .build();
     }
+
+    @Bean
+    public NewTopic inventorySuccessTopic() {
+        return TopicBuilder.name("inventory-check-success")
+                .replicas(2)
+                .partitions(3)
+                .build();
+    }
+
 
 
 
